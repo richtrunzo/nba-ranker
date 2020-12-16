@@ -14,12 +14,12 @@ var $myProfile = document.getElementById('my-profile');
 
 var $view = document.querySelectorAll('.view');
 
-document.addEventListener('DOMContentLoaded', function (event) {
-  if (data.profile.username !== null) {
-    viewSwap(3);
-    $myProfile.appendChild(profileRender(data));
-  }
-});
+// document.addEventListener('DOMContentLoaded', function (event) {
+//   if (data.profile.username !== null) {
+//     viewSwap(3);
+//     $myProfile.appendChild(profileRender(data));
+//   }
+// });
 
 $loginButton.addEventListener('click', function (event) {
   viewSwap(1);

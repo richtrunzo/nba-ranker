@@ -15,10 +15,11 @@
     <div class="header">
       <h1>NBA Ranker</h1>
       <i class="fas fa-basketball-ball"></i>
+      <p class="text home-btn">HOME</p>
     </div>
   </header>
   <main>
-    <div data-view="view" id="home" class="view active">
+    <div data-view="view" id="home" class="view hidden">
       <div class="row-one login">
         <button class="login-btn">Login</button>
       </div>
@@ -79,6 +80,18 @@
         <button class="profile-btn my-profile-btn">My Profile</button>
         <button class="profile-btn my-rankings-button">My Rankings</button>
         <button class="profile-btn fav-rankings-button">Favorite Rankings</button>
+      </div>
+    </div>
+
+    <div data-view="view" id="homepage" class="view active">
+      <div class="row-one">
+        <button class="homepage-btn my-profile-btn-home">My Profile</button>
+      </div>
+      <div class="row-two">
+        <button class="homepage-btn create-ranking-btn">Create New Ranking</button>
+      </div>
+      <div class="row-three">
+        <button class="homepage-btn browse-ranking-btn">Browse Rankings</button>
       </div>
     </div>
 

@@ -18,8 +18,16 @@ h1 {
 .fa-basketball-ball {
   color: black;
   font-size: 50px;
-  padding-bottom: 10px;
   padding-top: 0;
+}
+
+.fa-basketball-ball:hover {
+  color: #fafafa;
+}
+
+.home-btn {
+  margin-top: 4px;
+  font-size: 20px;
 }
 
 /* home login page (first page you see) */
@@ -94,4 +102,17 @@ h1 {
   width: 80%;
   padding-top: 5%;
   padding-bottom: 5%;
+}
+
+/* homepage  */
+
+.homepage-btn {
+  background-color: #17408b;
+  color: #fafafa;
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  width: 90%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  margin-top: 40px;
 }
