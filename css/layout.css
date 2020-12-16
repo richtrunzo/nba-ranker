@@ -2,6 +2,10 @@
   display: none;
 }
 
+.text {
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+}
+
 .row-one {
   display: flex;
   justify-content: center;

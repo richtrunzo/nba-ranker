@@ -83,3 +83,15 @@ h1 {
   padding-top: 5%;
   padding-bottom: 5%;
 }
+
+/* My Profile */
+
+.profile-btn {
+  background-color: #17408b;
+  color: #fafafa;
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  width: 80%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
