@@ -22,6 +22,16 @@
   justify-content: center;
 }
 
+.row-five {
+  display: flex;
+  justify-content: center;
+}
+
+.row-six {
+  display: flex;
+  justify-content: center;
+}
+
 body {
   background-color: #fafafa;
 }
