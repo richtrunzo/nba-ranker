@@ -1,0 +1,38 @@
+/* header */
+
+.header {
+  background-color: #FA8320;
+  margin: 0 auto;
+  text-align: center;
+
+}
+
+h1 {
+  margin-top: 0;
+  padding-top: 20px;
+  padding-bottom: 0;
+  font-family: 'Sport';
+  font-size: 50px;
+  margin-bottom: 0;
+}
+
+.fa-basketball-ball {
+  color: black;
+  font-size: 50px;
+  padding-bottom: 10px;
+  padding-top: 0;
+}
+
+/* home login page (first page you see) */
+
+.login-btn,
+.signup-btn {
+  background-color: #17408B;
+  color: #fafafa;
+  font-family: 'Sport';
+  font-size: 50px;
+  width: 90%;
+  margin-top: 15%;
+  padding-top: 15%;
+  padding-bottom: 15%;
+}

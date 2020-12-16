@@ -1,0 +1,27 @@
+.hidden {
+  display: none;
+}
+
+.row-one {
+  display: flex;
+  justify-content: center;
+}
+
+.row-two {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+@font-face {
+  font-family: 'Ave';
+  src: url('Fonts/Ave.ttf');
+}
+
+@font-face {
+  font-family: 'Sport';
+  src: url('Fonts/sf-sports-night.regular.ttf');
+}
