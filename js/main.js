@@ -11,6 +11,7 @@ var $signupPassword = document.querySelector('.signup-password');
 var $signupTeam = document.querySelector('.signup-team');
 
 var $homeButtonI = document.querySelector('i');
+var $myProfileBtnHome = document.querySelector('.my-profile-btn-home');
 
 var $myProfile = document.getElementById('my-profile');
 
@@ -22,6 +23,10 @@ var $view = document.querySelectorAll('.view');
 //     $myProfile.appendChild(profileRender(data));
 //   }
 // });
+
+$myProfileBtnHome.addEventListener('click', function (event) {
+  viewSwap(3);
+});
 
 $homeButtonI.addEventListener('click', function (event) {
   if (data.profile.username === null) {
