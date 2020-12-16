@@ -35,3 +35,27 @@ h1 {
   padding-top: 15%;
   padding-bottom: 15%;
 }
+
+/* Login page */
+.login-text {
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+}
+
+.email-input,
+.pw-input {
+  margin-top: 10px;
+  width: 80%;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.submit-login {
+  background-color: #17408b;
+  color: #fafafa;
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  width: 80%;
+  margin-top: 15%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
