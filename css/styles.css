@@ -1,17 +1,16 @@
 /* header */
 
 .header {
-  background-color: #FA8320;
+  background-color: #fa8320;
   margin: 0 auto;
   text-align: center;
-
 }
 
 h1 {
   margin-top: 0;
   padding-top: 20px;
   padding-bottom: 0;
-  font-family: 'Sport';
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
   font-size: 50px;
   margin-bottom: 0;
 }
@@ -27,9 +26,9 @@ h1 {
 
 .login-btn,
 .signup-btn {
-  background-color: #17408B;
+  background-color: #17408b;
   color: #fafafa;
-  font-family: 'Sport';
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
   font-size: 50px;
   width: 90%;
   margin-top: 15%;

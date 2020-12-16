@@ -12,6 +12,11 @@
   justify-content: center;
 }
 
+.row-three {
+  display: flex;
+  justify-content: center;
+}
+
 body {
   background-color: #fafafa;
 }

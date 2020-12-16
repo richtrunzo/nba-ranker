@@ -18,7 +18,7 @@
     </div>
   </header>
   <main>
-    <div id="home" class="active">
+    <div data-view="view" id="home" class="hidden">
       <div class="row-one login">
         <button class="login-btn">Login</button>
       </div>
@@ -26,6 +26,19 @@
         <button class="signup-btn">Sign Up</button>
       </div>
     </div>
+
+    <div data-view="view" id="login" class="active">
+      <div class="row-one login-text">
+        <h2>Login</h2>
+      </div>
+      <div class="row-two email-input">
+        <input type="email" placeholder="Email" id="email">
+      </div>
+      <div class="row-three">
+        <input type="password" placeholder="Password" id="password">
+      </div>
+    </div>
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
