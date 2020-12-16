@@ -12,6 +12,7 @@ var $signupTeam = document.querySelector('.signup-team');
 
 var $homeButtonI = document.querySelector('i');
 var $myProfileBtnHome = document.querySelector('.my-profile-btn-home');
+var $createRankingButton = document.querySelector('.create-ranking-btn');
 
 var $myProfile = document.getElementById('my-profile');
 
@@ -23,6 +24,10 @@ var $view = document.querySelectorAll('.view');
 //     $myProfile.appendChild(profileRender(data));
 //   }
 // });
+
+$createRankingButton.addEventListener('click', function (event) {
+  viewSwap(5);
+});
 
 $myProfileBtnHome.addEventListener('click', function (event) {
   viewSwap(3);
