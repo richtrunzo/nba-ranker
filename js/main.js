@@ -10,6 +10,8 @@ var $signupUsername = document.querySelector('.signup-username');
 var $signupPassword = document.querySelector('.signup-password');
 var $signupTeam = document.querySelector('.signup-team');
 
+var $homeButtonI = document.querySelector('i');
+
 var $myProfile = document.getElementById('my-profile');
 
 var $view = document.querySelectorAll('.view');
@@ -20,6 +22,14 @@ var $view = document.querySelectorAll('.view');
 //     $myProfile.appendChild(profileRender(data));
 //   }
 // });
+
+$homeButtonI.addEventListener('click', function (event) {
+  if (data.profile.username === null) {
+    viewSwap(0);
+  } else if (data.profile.username !== null) {
+    viewSwap(4);
+  }
+});
 
 $loginButton.addEventListener('click', function (event) {
   viewSwap(1);
