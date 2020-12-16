@@ -59,3 +59,27 @@ h1 {
   padding-top: 5%;
   padding-bottom: 5%;
 }
+
+/* Create account page */
+
+.create-an-account-text {
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+}
+
+.signup-input {
+  margin-top: 10px;
+  width: 80%;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.signup-submit-btn {
+  background-color: #17408b;
+  color: #fafafa;
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  width: 80%;
+  margin-top: 15%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
