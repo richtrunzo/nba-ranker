@@ -31,6 +31,7 @@ $createRankingButton.addEventListener('click', function (event) {
 
 $myProfileBtnHome.addEventListener('click', function (event) {
   viewSwap(3);
+  $myProfile.appendChild(profileRender(data));
 });
 
 $homeButtonI.addEventListener('click', function (event) {

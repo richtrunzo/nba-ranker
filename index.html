@@ -94,7 +94,7 @@
       </div>
     </div>
 
-    <div data-view="view" id="create-ranking" class="view active">
+    <div data-view="view" id="create-ranking" class="view hidden">
       <div class="row-one">
         <h2 class="text">Create New Ranking</h2>
       </div>
@@ -106,15 +106,28 @@
           <textarea class="ranking-description" placeholder="Description"></textarea>
         </div>
         <div class="row-four">
-          <input type="search" class="ranking-search" placeholder="Search for players">
+          <input id="search-for-players" type="search" class="ranking-search" placeholder="Search for players">
+          <button class="ranking-search-btn">Search</button>
         </div>
-        <div class="row-five list-render">
-
-        </div>
+        <div class="row-five list-render"></div>
         <div class="row-six">
           <button class="ranking-submit-btn text">SUBMIT</button>
         </div>
       </form>
+    </div>
+
+    <div data-view="view" id="search-results-create-ranking" class="view active">
+      <div class="row-one">
+        <h2 class="text">Search Results</h2>
+      </div>
+      <div class="results-container">
+        <div class="row">
+          <p class="text">Anthony Davis</p>
+          <p class="text">, C</p>
+          <p class="text">, Lakers</p>
+          <button class="text add-btn">ADD</button>
+        </div>
+      </div>
     </div>
 
   </main>

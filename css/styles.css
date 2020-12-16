@@ -120,9 +120,13 @@ h1 {
 /* Create Ranking */
 
 .ranking-title,
-.ranking-description,
-.ranking-search {
+.ranking-description {
   width: 90%;
+  margin-top: 10px;
+}
+
+.ranking-search {
+  width: 65%;
   margin-top: 10px;
 }
 
@@ -134,4 +138,31 @@ h1 {
   padding-top: 5%;
   padding-bottom: 5%;
   margin-top: 80%;
+}
+
+.ranking-search-btn {
+  background-color: #17408b;
+  color: #fafafa;
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  margin-top: 10px;
+  width: 20%;
+  margin-left: 20px;
+}
+
+/* Search results page */
+
+.add-btn {
+  background-color: #17408b;
+  color: #fafafa;
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 20%;
+  margin-left: 20px;
+}
+
+.results-container {
+  background-color: beige;
 }
