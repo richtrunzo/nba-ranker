@@ -18,7 +18,7 @@
     </div>
   </header>
   <main>
-    <div data-view="view" id="home" class="active">
+    <div data-view="view" id="home" class="hidden">
       <div class="row-one login">
         <button class="login-btn">Login</button>
       </div>
@@ -27,20 +27,23 @@
       </div>
     </div>
 
-    <div data-view="view" id="login" class="hidden">
+    <div data-view="view" id="login" class="active">
       <div class="row-one login-text">
         <h2>Login To Your Account</h2>
       </div>
-      <div class="row-two">
-        <input class="email-input" type="email" placeholder="Email" id="email">
-      </div>
-      <div class="row-three">
-        <input class="pw-input" type="password" placeholder="Password" id="password">
-      </div>
-      <div class="row-four">
-        <button class="submit-login-btn">Login</button>
-      </div>
+      <form class="login-form">
+        <div class="row-two">
+          <input class="email-input" type="email" placeholder="Email" id="email">
+        </div>
+        <div class="row-three">
+          <input class="pw-input" type="password" placeholder="Password" id="password">
+        </div>
+        <div class="row-four">
+          <button class="submit-login-btn">Login</button>
+        </div>
+      </form>
     </div>
+
 
     <div data-view="view" id="signup-page" class="hidden">
       <div class="row-one">
