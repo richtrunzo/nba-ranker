@@ -116,3 +116,22 @@ h1 {
   padding-bottom: 10%;
   margin-top: 40px;
 }
+
+/* Create Ranking */
+
+.ranking-title,
+.ranking-description,
+.ranking-search {
+  width: 90%;
+  margin-top: 10px;
+}
+
+.ranking-submit-btn {
+  width: 80%;
+  background-color: #17408b;
+  color: #fafafa;
+  font-size: 22px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin-top: 80%;
+}
