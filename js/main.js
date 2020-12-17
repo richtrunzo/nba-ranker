@@ -13,6 +13,8 @@ var $signupTeam = document.querySelector('.signup-team');
 var $homeButtonI = document.querySelector('i');
 var $myProfileBtnHome = document.querySelector('.my-profile-btn-home');
 var $createRankingButton = document.querySelector('.create-ranking-btn');
+var $rankingSearchButton = document.querySelector('.ranking-search-btn');
+var $rankingSearchInput = document.querySelector('.ranking-search');
 
 var $myProfile = document.getElementById('my-profile');
 
@@ -24,6 +26,13 @@ var $view = document.querySelectorAll('.view');
 //     $myProfile.appendChild(profileRender(data));
 //   }
 // });
+
+$rankingSearchButton.addEventListener('click', function (event) {
+  searchResults.search.name = $rankingSearchInput.value;
+  viewSwap(6);
+  console.log(searchResults);
+  event.preventDefault();
+});
 
 $createRankingButton.addEventListener('click', function (event) {
   viewSwap(5);
