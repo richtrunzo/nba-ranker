@@ -18,7 +18,7 @@
     </div>
   </header>
   <main>
-    <div data-view="view" id="home" class="view active">
+    <div data-view="view" id="home" class="view hidden">
       <div class="row-one login">
         <button class="login-btn">Login</button>
       </div>
@@ -123,6 +123,23 @@
       </div>
       <div class="results-container"></div>
     </div>
+
+    <div data-view="view" id="my-rankings" class="view active">
+      <div class="row-one">
+        <h2 class="text">My Rankings</h2>
+      </div>
+      <div class="row-two my-profile-buttons">
+        <button class="profile-btn my-profile-btn">My Profile</button>
+        <button class="profile-btn my-rankings-button">My Rankings</button>
+        <button class="profile-btn fav-rankings-button">Favorite Rankings</button>
+      </div>
+      <div class="myrankings-container">
+        <div class="row">
+          <button id="ranking-save-button">Top 5</button>
+        </div>
+      </div>
+    </div>
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

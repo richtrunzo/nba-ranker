@@ -21,13 +21,13 @@ var $createRankingListRender = document.querySelector('.list-render');
 
 var $view = document.querySelectorAll('.view');
 
-document.addEventListener('DOMContentLoaded', function (event) {
-  if (data.profile.username !== null) {
-    viewSwap(3);
-    $myProfileContainer.innerHTML = '';
-    $view[3].appendChild(profileRender(data));
-  }
-});
+// document.addEventListener('DOMContentLoaded', function (event) {
+//   if (data.profile.username !== null) {
+//     viewSwap(3);
+//     $myProfileContainer.innerHTML = '';
+//     $view[3].appendChild(profileRender(data));
+//   }
+// });
 
 var listNumber = 1;
 var listNumberString = listNumber.toString();
