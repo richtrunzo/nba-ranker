@@ -15,6 +15,7 @@ var $myProfileBtnHome = document.querySelector('.my-profile-btn-home');
 var $createRankingButton = document.querySelector('.create-ranking-btn');
 var $rankingSearchButton = document.querySelector('.ranking-search-btn');
 var $rankingSearchInput = document.querySelector('.ranking-search');
+var $searchResultsContainer = document.querySelector('.results-container');
 
 var $myProfile = document.getElementById('my-profile');
 
@@ -26,13 +27,43 @@ var $view = document.querySelectorAll('.view');
 //     $myProfile.appendChild(profileRender(data));
 //   }
 // });
+var xhr = new XMLHttpRequest();
 
 $rankingSearchButton.addEventListener('click', function (event) {
   searchResults.search.name = $rankingSearchInput.value;
   viewSwap(6);
-  console.log(searchResults);
+  xhr.open('GET', 'https://www.balldontlie.io/api/v1/players?search=' + searchResults.search.name);
+  xhr.responseType = 'json';
+  xhr.send();
   event.preventDefault();
 });
+
+xhr.addEventListener('load', function (event) {
+  searchResults.results = [];
+  searchResults.results.push(xhr.response);
+  appendSearch();
+});
+
+function appendSearch() {
+  var arr = [];
+  for (var i = 0; i < searchResults.results[0].data.length; i++) {
+    var $div = document.createElement('div');
+    $div.setAttribute('class', 'row');
+    var $text = document.createElement('p');
+    $text.setAttribute('class', 'text');
+    $text.appendChild(document.createTextNode(searchResults.results[0].data[i].first_name + ' ' + searchResults.results[0].data[i].last_name + ', ' + searchResults.results[0].data[i].team.name));
+    var $addButton = document.createElement('button');
+    $addButton.setAttribute('class', 'text');
+    $addButton.setAttribute('class', 'add-btn');
+    $addButton.appendChild(document.createTextNode('ADD'));
+    $div.appendChild($text);
+    $div.appendChild($addButton);
+    arr.push($div);
+  }
+  for (var i = 0; i < arr.length; i++) {
+    $searchResultsContainer.appendChild(arr[i]);
+  }
+}
 
 $createRankingButton.addEventListener('click', function (event) {
   viewSwap(5);
@@ -49,6 +80,8 @@ $homeButtonI.addEventListener('click', function (event) {
   } else if (data.profile.username !== null) {
     viewSwap(4);
   }
+  searchResults.results = [];
+  $searchResultsContainer.innerHTML = '';
 });
 
 $loginButton.addEventListener('click', function (event) {
