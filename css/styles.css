@@ -176,3 +176,13 @@ h1 {
   padding-bottom: 5%;
   margin-top: 10%;
 }
+
+.saved-ranking-container {
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+  background-color: beige;
+  width: 90%;
+  border-color: #17408b;
+  border-radius: 1rem;
+  border-style: solid;
+  margin-top: 5px;
+}

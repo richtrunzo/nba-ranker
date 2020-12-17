@@ -19,15 +19,49 @@ var $rankingSearchInput = document.querySelector('.ranking-search');
 var $searchResultsContainer = document.querySelector('.results-container');
 var $createRankingListRender = document.querySelector('.list-render');
 
+var $myRankingsButton = document.querySelectorAll('.my-rankings-button');
+var $myProfileButton = document.querySelectorAll('.my-profile-btn');
+var $rankingSubmitButton = document.querySelector('.ranking-submit-btn');
+var $createRankingForm = document.querySelector('.create-ranking-form');
+var $rankingTitle = document.querySelector('.ranking-title');
+var $rankingDescription = document.querySelector('.ranking-description');
+var $myRankingsContainer = document.querySelector('.myrankings-container');
+
 var $view = document.querySelectorAll('.view');
 
-// document.addEventListener('DOMContentLoaded', function (event) {
-//   if (data.profile.username !== null) {
-//     viewSwap(3);
-//     $myProfileContainer.innerHTML = '';
-//     $view[3].appendChild(profileRender(data));
-//   }
-// });
+document.addEventListener('DOMContentLoaded', function (event) {
+  if (data.profile.username !== null) {
+    viewSwap(3);
+    $myProfileContainer.innerHTML = '';
+    $view[3].appendChild(profileRender(data));
+  }
+});
+
+$createRankingForm.addEventListener('submit', function (event) {
+  searchResults.search.title = $rankingTitle.value;
+  searchResults.search.description = $rankingDescription.value;
+  data.rankings.push($createRankingListRender.innerHTML);
+  $view[7].appendChild(saveRankingRender(searchResults));
+  viewSwap(7);
+  event.preventDefault();
+});
+
+function saveRankingRender() {
+  var $mainDiv = document.createElement('div');
+  $mainDiv.setAttribute('class', 'myrankings-container row');
+  var $containerDiv = document.createElement('div');
+  $containerDiv.setAttribute('class', 'saved-ranking-container');
+  var $savedTitle = document.createElement('h3');
+  $savedTitle.setAttribute('class', 'row');
+  $savedTitle.appendChild(document.createTextNode(searchResults.search.title));
+  var $savedDescription = document.createElement('p');
+  $savedDescription.setAttribute('class', 'row');
+  $savedDescription.appendChild(document.createTextNode(searchResults.search.description));
+  $containerDiv.appendChild($savedTitle);
+  $containerDiv.appendChild($savedDescription);
+  $mainDiv.appendChild($containerDiv);
+  return $mainDiv;
+}
 
 var listNumber = 1;
 var listNumberString = listNumber.toString();
@@ -80,6 +114,14 @@ function appendSearch() {
   }
 }
 
+$myProfileButton[1].addEventListener('click', function (event) {
+  viewSwap(3);
+});
+
+$myRankingsButton[0].addEventListener('click', function (event) {
+  viewSwap(7);
+});
+
 $createRankingButton.addEventListener('click', function (event) {
   viewSwap(5);
 });
@@ -96,6 +138,9 @@ $homeButtonI.addEventListener('click', function (event) {
   }
   searchResults.results = [];
   $searchResultsContainer.innerHTML = '';
+  $createRankingListRender.innerHTML = '';
+  listNumber = 1;
+  listNumberString = listNumber.toString();
 });
 
 $loginButton.addEventListener('click', function (event) {
