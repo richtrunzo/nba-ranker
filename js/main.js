@@ -21,12 +21,13 @@ var $createRankingListRender = document.querySelector('.list-render');
 
 var $view = document.querySelectorAll('.view');
 
-// document.addEventListener('DOMContentLoaded', function (event) {
-//   if (data.profile.username !== null) {
-//     viewSwap(3);
-//     $myProfile.appendChild(profileRender(data));
-//   }
-// });
+document.addEventListener('DOMContentLoaded', function (event) {
+  if (data.profile.username !== null) {
+    viewSwap(3);
+    $myProfileContainer.innerHTML = '';
+    $view[3].appendChild(profileRender(data));
+  }
+});
 
 var listNumber = 1;
 var listNumberString = listNumber.toString();
@@ -48,6 +49,7 @@ $searchResultsContainer.addEventListener('click', function (event) {
 var xhr = new XMLHttpRequest();
 
 $rankingSearchButton.addEventListener('click', function (event) {
+  $searchResultsContainer.innerHTML = '';
   searchResults.search.name = $rankingSearchInput.value;
   viewSwap(6);
   xhr.open('GET', 'https://www.balldontlie.io/api/v1/players?search=' + searchResults.search.name);
@@ -84,8 +86,6 @@ $createRankingButton.addEventListener('click', function (event) {
 
 $myProfileBtnHome.addEventListener('click', function (event) {
   viewSwap(3);
-  $myProfileContainer.innerHTML = '';
-  $myProfileContainer.appendChild(profileRender(data));
 });
 
 $homeButtonI.addEventListener('click', function (event) {

@@ -154,6 +154,10 @@ h1 {
   margin-right: 5px;
 }
 
+.search-result:hover {
+  color: #17408b;
+}
+
 /* Search results page */
 
 .add-btn {
