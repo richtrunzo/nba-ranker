@@ -60,6 +60,7 @@ function saveRankingRender() {
   $containerDiv.appendChild($savedTitle);
   $containerDiv.appendChild($savedDescription);
   $mainDiv.appendChild($containerDiv);
+  $mainDiv.appendChild($myProfileContainer.innerHTML);
   return $mainDiv;
 }
 
