@@ -26,6 +26,8 @@ var $rankingTitle = document.querySelector('.ranking-title');
 var $rankingDescription = document.querySelector('.ranking-description');
 
 var $playerStatsButton = document.querySelector('.player-stats-btn');
+var $statsSearchInput = document.querySelector('.stats-search-input');
+var $statsSearchButton = document.querySelector('.stats-search-button');
 
 var $view = document.querySelectorAll('.view');
 
@@ -38,6 +40,47 @@ var $view = document.querySelectorAll('.view');
 //     viewSwap(0);
 //   }
 // });
+
+var xhrTwo = new XMLHttpRequest();
+
+$statsSearchButton.addEventListener('click', function (event) {
+  stats.name = $statsSearchInput.value;
+  xhrTwo.open('GET', 'https://www.balldontlie.io/api/v1/players?search=' + stats.name);
+  xhrTwo.responseType = 'json';
+  xhrTwo.send();
+});
+
+xhrTwo.addEventListener('load', function (event) {
+  console.log(xhrTwo.response);
+  stats.id = xhrTwo.response.data[0].id;
+  x = stats.id.toString();
+  statsCallBack();
+});
+
+var xhrThree = new XMLHttpRequest();
+var x = stats.id.toString();
+
+function statsCallBack() {
+  xhrThree.open('GET', 'https://www.balldontlie.io/api/v1/season_averages?season=2019&player_ids[]=' + x);
+  xhrThree.responseType = 'json';
+  xhrThree.send();
+}
+
+xhrThree.addEventListener('load', function (event) {
+  console.log(xhrThree.response);
+  stats.ppg = xhrThree.response.data[0].pts;
+  stats.percent = xhrThree.response.data[0].fg_pct;
+  stats.min = xhrThree.response.data[0].min;
+  stats.reb = xhrThree.response.data[0].reb;
+  stats.assist = xhrThree.response.data[0].ast;
+  stats.steal = xhrThree.response.data[0].stl;
+  stats.blocks = xhrThree.response.data[0].blk;
+  stats.turn = xhrThree.response.data[0].turnover;
+});
+
+function statsRender() {
+
+}
 
 document.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.rankings.length; i++) {

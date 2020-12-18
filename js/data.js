@@ -21,7 +21,16 @@ var searchResults = {
 };
 
 var stats = {
-  id: null
+  name: null,
+  id: null,
+  ppg: null,
+  percent: null,
+  min: null,
+  reb: null,
+  assist: null,
+  steal: null,
+  blocks: null,
+  turn: null
 };
 
 var previousData = localStorage.getItem('profile-information');
