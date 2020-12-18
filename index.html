@@ -18,7 +18,7 @@
     </div>
   </header>
   <main>
-    <div data-view="view" id="home" class="view active">
+    <div data-view="view" id="home" class="view hidden">
       <div class="row-one login">
         <button class="login-btn">Login</button>
       </div>
@@ -101,10 +101,10 @@
       </div>
       <form class="create-ranking-form">
         <div class="row-two">
-          <input class="ranking-title" type="text" placeholder="Title">
+          <input class="ranking-title" type="text" placeholder="Title" required>
         </div>
         <div class="row-three">
-          <textarea class="ranking-description" placeholder="Description"></textarea>
+          <textarea class="ranking-description" placeholder="Description" required></textarea>
         </div>
         <div class="row-four">
           <input id="search-for-players" type="search" class="ranking-search" placeholder="Search for players">
@@ -123,6 +123,18 @@
       </div>
       <div class="results-container"></div>
     </div>
+
+    <div data-view="view" id="my-rankings" class="view active">
+      <div class="row-one">
+        <h2 class="text">My Rankings</h2>
+      </div>
+      <div class="row-two my-profile-buttons">
+        <button class="profile-btn my-profile-btn">My Profile</button>
+        <button class="profile-btn my-rankings-button">My Rankings</button>
+        <button class="profile-btn fav-rankings-button">Favorite Rankings</button>
+      </div>
+    </div>
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

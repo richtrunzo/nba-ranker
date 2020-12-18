@@ -19,6 +19,12 @@ var $rankingSearchInput = document.querySelector('.ranking-search');
 var $searchResultsContainer = document.querySelector('.results-container');
 var $createRankingListRender = document.querySelector('.list-render');
 
+var $myRankingsButton = document.querySelectorAll('.my-rankings-button');
+var $myProfileButton = document.querySelectorAll('.my-profile-btn');
+var $createRankingForm = document.querySelector('.create-ranking-form');
+var $rankingTitle = document.querySelector('.ranking-title');
+var $rankingDescription = document.querySelector('.ranking-description');
+
 var $view = document.querySelectorAll('.view');
 
 document.addEventListener('DOMContentLoaded', function (event) {
@@ -26,8 +32,66 @@ document.addEventListener('DOMContentLoaded', function (event) {
     viewSwap(3);
     $myProfileContainer.innerHTML = '';
     $view[3].appendChild(profileRender(data));
+  } else if (data.profile.username === null) {
+    viewSwap(0);
   }
 });
+
+document.addEventListener('DOMContentLoaded', function (event) {
+  for (var i = 0; i < data.rankings.length; i++) {
+    $view[7].appendChild(showRankingRender(i));
+  }
+});
+
+function showRankingRender(index) {
+  var $mainDiv = document.createElement('div');
+  $mainDiv.setAttribute('class', 'myrankings-container row');
+  var $containerDiv = document.createElement('div');
+  $containerDiv.setAttribute('class', 'saved-ranking-container');
+  var $savedTitle = document.createElement('h3');
+  $savedTitle.setAttribute('class', 'row');
+  $savedTitle.appendChild(document.createTextNode(data.rankings[index].title));
+  var $savedDescription = document.createElement('p');
+  $savedDescription.setAttribute('class', 'row');
+  $savedDescription.appendChild(document.createTextNode(data.rankings[index].description));
+  var $savedList = document.createRange();
+  var $frag = $savedList.createContextualFragment(data.rankings[index].list);
+  $containerDiv.appendChild($savedTitle);
+  $containerDiv.appendChild($savedDescription);
+  $containerDiv.appendChild($frag);
+  $mainDiv.appendChild($containerDiv);
+  return $mainDiv;
+}
+
+$createRankingForm.addEventListener('submit', function (event) {
+  searchResults.search.title = $rankingTitle.value;
+  searchResults.search.description = $rankingDescription.value;
+  searchResults.search.list = $createRankingListRender.innerHTML;
+  data.rankings.push(searchResults.search);
+  event.preventDefault();
+  $view[7].appendChild(saveRankingRender(searchResults));
+  viewSwap(7);
+});
+
+function saveRankingRender() {
+  var $mainDiv = document.createElement('div');
+  $mainDiv.setAttribute('class', 'myrankings-container row');
+  var $containerDiv = document.createElement('div');
+  $containerDiv.setAttribute('class', 'saved-ranking-container');
+  var $savedTitle = document.createElement('h3');
+  $savedTitle.setAttribute('class', 'row');
+  $savedTitle.appendChild(document.createTextNode(searchResults.search.title));
+  var $savedDescription = document.createElement('p');
+  $savedDescription.setAttribute('class', 'row');
+  $savedDescription.appendChild(document.createTextNode(searchResults.search.description));
+  var $savedList = document.createRange();
+  var $frag = $savedList.createContextualFragment(searchResults.search.list);
+  $containerDiv.appendChild($savedTitle);
+  $containerDiv.appendChild($savedDescription);
+  $containerDiv.appendChild($frag);
+  $mainDiv.appendChild($containerDiv);
+  return $mainDiv;
+}
 
 var listNumber = 1;
 var listNumberString = listNumber.toString();
@@ -36,7 +100,7 @@ $searchResultsContainer.addEventListener('click', function (event) {
   var $playerDiv = document.createElement('div');
   var $playerText = document.createElement('p');
   $playerText.appendChild(document.createTextNode(listNumberString + '.'));
-  $playerDiv.setAttribute('class', 'row text');
+  $playerDiv.setAttribute('class', 'row text savelist');
   $playerText.setAttribute('class', 'text-two player-number');
   $playerDiv.appendChild($playerText);
   $playerDiv.appendChild(event.target);
@@ -80,6 +144,14 @@ function appendSearch() {
   }
 }
 
+$myProfileButton[1].addEventListener('click', function (event) {
+  viewSwap(3);
+});
+
+$myRankingsButton[0].addEventListener('click', function (event) {
+  viewSwap(7);
+});
+
 $createRankingButton.addEventListener('click', function (event) {
   viewSwap(5);
 });
@@ -96,6 +168,9 @@ $homeButtonI.addEventListener('click', function (event) {
   }
   searchResults.results = [];
   $searchResultsContainer.innerHTML = '';
+  $createRankingListRender.innerHTML = '';
+  listNumber = 1;
+  listNumberString = listNumber.toString();
 });
 
 $loginButton.addEventListener('click', function (event) {

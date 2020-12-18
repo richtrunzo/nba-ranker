@@ -12,7 +12,10 @@ var data = {
 
 var searchResults = {
   search: {
-    name: null
+    name: null,
+    title: null,
+    description: null,
+    list: null
   },
   results: []
 };
