@@ -11,6 +11,11 @@
   justify-content: flex-start;
 }
 
+.row {
+  display: flex;
+  justify-content: center;
+}
+
 .row-one {
   display: flex;
   justify-content: center;
@@ -44,6 +49,10 @@
 .row-seven {
   display: flex;
   justify-content: center;
+}
+
+.text-two {
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
 }
 
 body {

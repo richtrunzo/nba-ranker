@@ -18,8 +18,16 @@ h1 {
 .fa-basketball-ball {
   color: black;
   font-size: 50px;
-  padding-bottom: 10px;
   padding-top: 0;
+}
+
+.fa-basketball-ball:hover {
+  color: #fafafa;
+}
+
+.home-btn {
+  margin-top: 4px;
+  font-size: 20px;
 }
 
 /* home login page (first page you see) */
@@ -94,4 +102,75 @@ h1 {
   width: 80%;
   padding-top: 5%;
   padding-bottom: 5%;
+}
+
+/* homepage  */
+
+.homepage-btn {
+  background-color: #17408b;
+  color: #fafafa;
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  width: 90%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  margin-top: 40px;
+}
+
+/* Create Ranking */
+
+.ranking-title,
+.ranking-description {
+  width: 90%;
+  margin-top: 10px;
+}
+
+.ranking-search {
+  width: 65%;
+  margin-top: 10px;
+}
+
+.ranking-submit-btn {
+  width: 80%;
+  background-color: #17408b;
+  color: #fafafa;
+  font-size: 22px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin-top: 10%;
+}
+
+.ranking-search-btn {
+  background-color: #17408b;
+  color: #fafafa;
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  margin-top: 10px;
+  width: 20%;
+  margin-left: 20px;
+}
+
+.player-number {
+  margin-right: 5px;
+}
+
+.search-result:hover {
+  color: #17408b;
+}
+
+/* Search results page */
+
+.add-btn {
+  background-color: #17408b;
+  color: #fafafa;
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 20%;
+  margin-left: 20px;
+}
+
+.results-container {
+  background-color: beige;
 }

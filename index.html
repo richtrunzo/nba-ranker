@@ -80,8 +80,49 @@
         <button class="profile-btn my-rankings-button">My Rankings</button>
         <button class="profile-btn fav-rankings-button">Favorite Rankings</button>
       </div>
+      <div class="myprofile-container"></div>
     </div>
 
+    <div data-view="view" id="homepage" class="view hidden">
+      <div class="row-one">
+        <button class="homepage-btn my-profile-btn-home">My Profile</button>
+      </div>
+      <div class="row-two">
+        <button class="homepage-btn create-ranking-btn">Create New Ranking</button>
+      </div>
+      <div class="row-three">
+        <button class="homepage-btn browse-ranking-btn">Browse Rankings</button>
+      </div>
+    </div>
+
+    <div data-view="view" id="create-ranking" class="view hidden">
+      <div class="row-one">
+        <h2 class="text">Create New Ranking</h2>
+      </div>
+      <form class="create-ranking-form">
+        <div class="row-two">
+          <input class="ranking-title" type="text" placeholder="Title">
+        </div>
+        <div class="row-three">
+          <textarea class="ranking-description" placeholder="Description"></textarea>
+        </div>
+        <div class="row-four">
+          <input id="search-for-players" type="search" class="ranking-search" placeholder="Search for players">
+          <button class="ranking-search-btn">Search</button>
+        </div>
+        <div class="list-render"></div>
+        <div class="row-six">
+          <button class="ranking-submit-btn text">SUBMIT</button>
+        </div>
+      </form>
+    </div>
+
+    <div data-view="view" id="search-results-create-ranking" class="view hidden">
+      <div class="row-one">
+        <h2 class="text">Search Results</h2>
+      </div>
+      <div class="results-container"></div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

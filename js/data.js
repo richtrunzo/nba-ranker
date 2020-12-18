@@ -10,6 +10,13 @@ var data = {
   rankings: []
 };
 
+var searchResults = {
+  search: {
+    name: null
+  },
+  results: []
+};
+
 var previousData = localStorage.getItem('profile-information');
 if (previousData !== null) {
   data = JSON.parse(previousData);
@@ -18,4 +25,14 @@ if (previousData !== null) {
 window.addEventListener('beforeunload', function (event) {
   var dataJSON = JSON.stringify(data);
   localStorage.setItem('profile-information', dataJSON);
+});
+
+var previousSearchData = localStorage.getItem('search-information');
+if (previousSearchData !== null) {
+  searchResults = JSON.parse(previousSearchData);
+}
+
+window.addEventListener('beforeunload', function (event) {
+  var searchJSON = JSON.stringify(searchResults);
+  localStorage.setItem('search-information', searchJSON);
 });
