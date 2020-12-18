@@ -146,6 +146,10 @@ function appendSearch() {
   }
 }
 
+$playerStatsButton.addEventListener('click', function (event) {
+  viewSwap(8);
+});
+
 $myProfileButton[1].addEventListener('click', function (event) {
   viewSwap(3);
 });
