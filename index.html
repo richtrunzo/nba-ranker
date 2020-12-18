@@ -3,15 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJAX Project</title>
+  <title>NBA Ranker</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 <body>
   <header>
+    <div class="header">
+      <h1>NBA Ranker</h1>
+      <i class="fas fa-basketball-ball"></i>
+    </div>
   </header>
   <main>
+    <div data-view="view" id="home" class="view active">
+      <div class="row-one login">
+        <button class="login-btn">Login</button>
+      </div>
+      <div class="row-two signup">
+        <button class="signup-btn">Sign Up</button>
+      </div>
+    </div>
+
+    <div data-view="view" id="page login" class="view hidden">
+      <div class="row-one login-text">
+        <h2>Login To Your Account</h2>
+      </div>
+      <form class="login-form">
+        <div class="row-two">
+          <input class="email-input" type="email" placeholder="Email" id="email" required>
+        </div>
+        <div class="row-three">
+          <input class="pw-input" type="password" placeholder="Password" id="password" required>
+        </div>
+        <div class="row-four">
+          <button class="submit-login-btn">Login</button>
+        </div>
+      </form>
+    </div>
+
+
+    <div data-view="view" id="page signup-page" class="view hidden">
+      <div class="row-one">
+        <h2 class="create-an-account-text">Create an Account</h2>
+      </div>
+      <form class="signup-form">
+        <div class="row-two">
+          <input class="signup-input signup-name" type="text" placeholder="Your Name" required>
+        </div>
+        <div class="row-three">
+          <input class="signup-input signup-email" type="email" placeholder="Email" required>
+        </div>
+        <div class="row-four">
+          <input class="signup-input signup-username" type="text" placeholder="Username" required>
+        </div>
+        <div class="row-five">
+          <input class="signup-input signup-password" type="password" placeholder="Password" required>
+        </div>
+        <div class="row-six">
+          <input class="signup-input signup-team" type="text" placeholder="Your Favorite NBA Team" required>
+        </div>
+        <div class="row-seven">
+          <button class="signup-submit-btn">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <div data-view="view" id="my-profile" class="view hidden">
+      <div class="row-one">
+        <h2 class="text">My Profile</h2>
+      </div>
+      <div class="row-two my-profile-buttons">
+        <button class="profile-btn my-profile-btn">My Profile</button>
+        <button class="profile-btn my-rankings-button">My Rankings</button>
+        <button class="profile-btn fav-rankings-button">Favorite Rankings</button>
+      </div>
+    </div>
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

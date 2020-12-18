@@ -1,0 +1,61 @@
+.hidden {
+  display: none;
+}
+
+.text {
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+}
+
+.row-profile {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.row-one {
+  display: flex;
+  justify-content: center;
+}
+
+.row-two {
+  display: flex;
+  justify-content: center;
+}
+
+.row-three {
+  display: flex;
+  justify-content: center;
+}
+
+.row-four {
+  display: flex;
+  justify-content: center;
+}
+
+.row-five {
+  display: flex;
+  justify-content: center;
+}
+
+.row-six {
+  display: flex;
+  justify-content: center;
+}
+
+.row-seven {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+@font-face {
+  font-family: 'Ave';
+  src: url('Fonts/Ave.ttf');
+}
+
+@font-face {
+  font-family: 'Sport';
+  src: url('Fonts/sf-sports-night.regular.ttf');
+}
