@@ -37,6 +37,32 @@ document.addEventListener('DOMContentLoaded', function (event) {
   }
 });
 
+document.addEventListener('DOMContentLoaded', function (event) {
+  for (var i = 0; i < data.rankings.length; i++) {
+    $view[7].appendChild(showRankingRender(i));
+  }
+});
+
+function showRankingRender(index) {
+  var $mainDiv = document.createElement('div');
+  $mainDiv.setAttribute('class', 'myrankings-container row');
+  var $containerDiv = document.createElement('div');
+  $containerDiv.setAttribute('class', 'saved-ranking-container');
+  var $savedTitle = document.createElement('h3');
+  $savedTitle.setAttribute('class', 'row');
+  $savedTitle.appendChild(document.createTextNode(data.rankings[index].title));
+  var $savedDescription = document.createElement('p');
+  $savedDescription.setAttribute('class', 'row');
+  $savedDescription.appendChild(document.createTextNode(data.rankings[index].description));
+  var $savedList = document.createRange();
+  var $frag = $savedList.createContextualFragment(data.rankings[index].list);
+  $containerDiv.appendChild($savedTitle);
+  $containerDiv.appendChild($savedDescription);
+  $containerDiv.appendChild($frag);
+  $mainDiv.appendChild($containerDiv);
+  return $mainDiv;
+}
+
 $createRankingForm.addEventListener('submit', function (event) {
   searchResults.search.title = $rankingTitle.value;
   searchResults.search.description = $rankingDescription.value;
