@@ -40,10 +40,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
 $createRankingForm.addEventListener('submit', function (event) {
   searchResults.search.title = $rankingTitle.value;
   searchResults.search.description = $rankingDescription.value;
-  data.rankings.push($createRankingListRender.innerHTML);
+  searchResults.search.list = $createRankingListRender.innerHTML;
+  data.rankings.push(searchResults.search);
+  event.preventDefault();
   $view[7].appendChild(saveRankingRender(searchResults));
   viewSwap(7);
-  event.preventDefault();
 });
 
 function saveRankingRender() {
@@ -57,10 +58,12 @@ function saveRankingRender() {
   var $savedDescription = document.createElement('p');
   $savedDescription.setAttribute('class', 'row');
   $savedDescription.appendChild(document.createTextNode(searchResults.search.description));
+  var $savedList = document.createRange();
+  var $frag = $savedList.createContextualFragment(searchResults.search.list);
   $containerDiv.appendChild($savedTitle);
   $containerDiv.appendChild($savedDescription);
+  $containerDiv.appendChild($frag);
   $mainDiv.appendChild($containerDiv);
-  $mainDiv.appendChild($myProfileContainer.innerHTML);
   return $mainDiv;
 }
 
@@ -71,7 +74,7 @@ $searchResultsContainer.addEventListener('click', function (event) {
   var $playerDiv = document.createElement('div');
   var $playerText = document.createElement('p');
   $playerText.appendChild(document.createTextNode(listNumberString + '.'));
-  $playerDiv.setAttribute('class', 'row text');
+  $playerDiv.setAttribute('class', 'row text savelist');
   $playerText.setAttribute('class', 'text-two player-number');
   $playerDiv.appendChild($playerText);
   $playerDiv.appendChild(event.target);

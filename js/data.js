@@ -14,7 +14,8 @@ var searchResults = {
   search: {
     name: null,
     title: null,
-    description: null
+    description: null,
+    list: null
   },
   results: []
 };
