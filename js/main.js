@@ -21,11 +21,9 @@ var $createRankingListRender = document.querySelector('.list-render');
 
 var $myRankingsButton = document.querySelectorAll('.my-rankings-button');
 var $myProfileButton = document.querySelectorAll('.my-profile-btn');
-var $rankingSubmitButton = document.querySelector('.ranking-submit-btn');
 var $createRankingForm = document.querySelector('.create-ranking-form');
 var $rankingTitle = document.querySelector('.ranking-title');
 var $rankingDescription = document.querySelector('.ranking-description');
-var $myRankingsContainer = document.querySelector('.myrankings-container');
 
 var $view = document.querySelectorAll('.view');
 
@@ -34,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
     viewSwap(3);
     $myProfileContainer.innerHTML = '';
     $view[3].appendChild(profileRender(data));
+  } else if (data.profile.username === null) {
+    viewSwap(0);
   }
 });
 
