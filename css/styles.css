@@ -186,3 +186,32 @@ h1 {
   border-style: solid;
   margin-top: 5px;
 }
+
+/* Stats Page */
+
+.append-stats {
+  margin: 0 auto;
+  width: 90%;
+  border-color: #17408b;
+  border-radius: 1rem;
+  border-style: solid;
+  margin-top: 30px;
+  background-color: #fa8320;
+}
+
+.stats-row {
+  color: beige;
+  background-color: black;
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 1rem;
+  margin-bottom: 10px;
+  font-family: 'Orbitron', Arial, Helvetica, sans-serif;
+}
+
+.stats-search-input {
+  width: 70%;
+}
