@@ -28,6 +28,7 @@ var $rankingDescription = document.querySelector('.ranking-description');
 var $playerStatsButton = document.querySelector('.player-stats-btn');
 var $statsSearchInput = document.querySelector('.stats-search-input');
 var $statsSearchButton = document.querySelector('.stats-search-button');
+var $appendStatsDiv = document.querySelector('.append-stats');
 
 var $view = document.querySelectorAll('.view');
 
@@ -44,6 +45,7 @@ var $view = document.querySelectorAll('.view');
 var xhrTwo = new XMLHttpRequest();
 
 $statsSearchButton.addEventListener('click', function (event) {
+  $appendStatsDiv.innerHTML = ' ';
   stats.name = $statsSearchInput.value;
   xhrTwo.open('GET', 'https://www.balldontlie.io/api/v1/players?search=' + stats.name);
   xhrTwo.responseType = 'json';
@@ -76,10 +78,58 @@ xhrThree.addEventListener('load', function (event) {
   stats.steal = xhrThree.response.data[0].stl;
   stats.blocks = xhrThree.response.data[0].blk;
   stats.turn = xhrThree.response.data[0].turnover;
+  $appendStatsDiv.appendChild(statsRender(stats));
 });
 
 function statsRender() {
+  var $statsContainer = document.createElement('div');
+  $statsContainer.setAttribute('class', 'append-stats');
+  var $statsRowOne = document.createElement('p');
+  $statsRowOne.setAttribute('class', 'text row');
+  $statsRowOne.appendChild(document.createTextNode('NAME:' + ' ' + stats.name));
+  $statsContainer.appendChild($statsRowOne);
 
+  var $statsRowTwo = document.createElement('p');
+  $statsRowTwo.setAttribute('class', 'text row');
+  $statsRowTwo.appendChild(document.createTextNode('POINTS PER GAME:' + ' ' + stats.ppg.toString()));
+  $statsContainer.appendChild($statsRowTwo);
+
+  var $statsRowThree = document.createElement('p');
+  $statsRowThree.setAttribute('class', 'text row');
+  $statsRowThree.appendChild(document.createTextNode('FG PERCENTAGE:' + ' ' + stats.percent.toString()));
+  $statsContainer.appendChild($statsRowThree);
+
+  var $statsRowFour = document.createElement('p');
+  $statsRowFour.setAttribute('class', 'text row');
+  $statsRowFour.appendChild(document.createTextNode('MINUTES:' + ' ' + stats.min));
+  $statsContainer.appendChild($statsRowFour);
+
+  var $statsRowFive = document.createElement('p');
+  $statsRowFive.setAttribute('class', 'text row');
+  $statsRowFive.appendChild(document.createTextNode('REBOUNDS:' + ' ' + stats.reb.toString()));
+  $statsContainer.appendChild($statsRowFive);
+
+  var $statsRowSix = document.createElement('p');
+  $statsRowSix.setAttribute('class', 'text row');
+  $statsRowSix.appendChild(document.createTextNode('ASSISTS:' + ' ' + stats.assist.toString()));
+  $statsContainer.appendChild($statsRowSix);
+
+  var $statsRowSeven = document.createElement('p');
+  $statsRowSeven.setAttribute('class', 'text row');
+  $statsRowSeven.appendChild(document.createTextNode('STEALS:' + ' ' + stats.steal.toString()));
+  $statsContainer.appendChild($statsRowSeven);
+
+  var $statsRowEight = document.createElement('p');
+  $statsRowEight.setAttribute('class', 'text row');
+  $statsRowEight.appendChild(document.createTextNode('BLOCKS:' + ' ' + stats.blocks.toString()));
+  $statsContainer.appendChild($statsRowEight);
+
+  var $statsRowNine = document.createElement('p');
+  $statsRowNine.setAttribute('class', 'text row');
+  $statsRowNine.appendChild(document.createTextNode('TURNOVERS:' + ' ' + stats.turn.toString()));
+  $statsContainer.appendChild($statsRowNine);
+
+  return $statsContainer;
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
@@ -220,6 +270,7 @@ $homeButtonI.addEventListener('click', function (event) {
   $createRankingListRender.innerHTML = '';
   listNumber = 1;
   listNumberString = listNumber.toString();
+  $appendStatsDiv.innerHTML = '';
 });
 
 $loginButton.addEventListener('click', function (event) {
