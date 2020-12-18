@@ -25,17 +25,19 @@ var $createRankingForm = document.querySelector('.create-ranking-form');
 var $rankingTitle = document.querySelector('.ranking-title');
 var $rankingDescription = document.querySelector('.ranking-description');
 
+var $playerStatsButton = document.querySelector('.player-stats-btn');
+
 var $view = document.querySelectorAll('.view');
 
-document.addEventListener('DOMContentLoaded', function (event) {
-  if (data.profile.username !== null) {
-    viewSwap(3);
-    $myProfileContainer.innerHTML = '';
-    $view[3].appendChild(profileRender(data));
-  } else if (data.profile.username === null) {
-    viewSwap(0);
-  }
-});
+// document.addEventListener('DOMContentLoaded', function (event) {
+//   if (data.profile.username !== null) {
+//     viewSwap(3);
+//     $myProfileContainer.innerHTML = '';
+//     $view[3].appendChild(profileRender(data));
+//   } else if (data.profile.username === null) {
+//     viewSwap(0);
+//   }
+// });
 
 document.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.rankings.length; i++) {

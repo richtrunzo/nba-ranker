@@ -91,7 +91,7 @@
         <button class="homepage-btn create-ranking-btn">Create New Ranking</button>
       </div>
       <div class="row-three">
-        <button class="homepage-btn browse-ranking-btn">Browse Rankings</button>
+        <button class="homepage-btn browse-ranking-btn">Player Stats</button>
       </div>
     </div>
 
@@ -124,7 +124,7 @@
       <div class="results-container"></div>
     </div>
 
-    <div data-view="view" id="my-rankings" class="view active">
+    <div data-view="view" id="my-rankings" class="view hidden">
       <div class="row-one">
         <h2 class="text">My Rankings</h2>
       </div>
@@ -132,6 +132,27 @@
         <button class="profile-btn my-profile-btn">My Profile</button>
         <button class="profile-btn my-rankings-button">My Rankings</button>
         <button class="profile-btn fav-rankings-button">Favorite Rankings</button>
+      </div>
+    </div>
+
+    <div data-view="view" id="stats" class="view active">
+      <div class="row">
+        <h2 class="text">2019-2020 Player Stats</h2>
+      </div>
+      <div class="row">
+        <input type="text" class="stats=search-input">
+        <button class="text stats-search-button">SEARCH</button>
+      </div>
+      <div class="append-stats">
+        <p class="text row">Name:</p>
+        <p class="text row">Points Per Game:</p>
+        <p class="text row">FG Percentage:</p>
+        <p class="text row">Minutes:</p>
+        <p class="text row">Rebounds</p>
+        <p class="text row">Assists:</p>
+        <p class="text row">Steals:</p>
+        <p class="text row">Blocks:</p>
+        <p class="text row">Turnovers:</p>
       </div>
     </div>
 
