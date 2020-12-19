@@ -20,6 +20,19 @@ var searchResults = {
   results: []
 };
 
+var stats = {
+  name: null,
+  id: null,
+  ppg: null,
+  percent: null,
+  min: null,
+  reb: null,
+  assist: null,
+  steal: null,
+  blocks: null,
+  turn: null
+};
+
 var previousData = localStorage.getItem('profile-information');
 if (previousData !== null) {
   data = JSON.parse(previousData);
@@ -38,4 +51,14 @@ if (previousSearchData !== null) {
 window.addEventListener('beforeunload', function (event) {
   var searchJSON = JSON.stringify(searchResults);
   localStorage.setItem('search-information', searchJSON);
+});
+
+var previousStatsData = localStorage.getItem('stats-information');
+if (previousStatsData !== null) {
+  stats = JSON.parse(previousStatsData);
+}
+
+window.addEventListener('beforeunload', function (event) {
+  var statsJSON = JSON.stringify(stats);
+  localStorage.setItem('stats-information', statsJSON);
 });

@@ -25,6 +25,11 @@ var $createRankingForm = document.querySelector('.create-ranking-form');
 var $rankingTitle = document.querySelector('.ranking-title');
 var $rankingDescription = document.querySelector('.ranking-description');
 
+var $playerStatsButton = document.querySelector('.player-stats-btn');
+var $statsSearchInput = document.querySelector('.stats-search-input');
+var $statsSearchButton = document.querySelector('.stats-search-button');
+var $appendStatsDiv = document.querySelector('.append-stats-container');
+
 var $view = document.querySelectorAll('.view');
 
 document.addEventListener('DOMContentLoaded', function (event) {
@@ -36,6 +41,96 @@ document.addEventListener('DOMContentLoaded', function (event) {
     viewSwap(0);
   }
 });
+
+var xhrTwo = new XMLHttpRequest();
+
+$statsSearchButton.addEventListener('click', function (event) {
+  $appendStatsDiv.innerHTML = ' ';
+  stats.name = $statsSearchInput.value;
+  xhrTwo.open('GET', 'https://www.balldontlie.io/api/v1/players?search=' + stats.name);
+  xhrTwo.responseType = 'json';
+  xhrTwo.send();
+});
+
+xhrTwo.addEventListener('load', function (event) {
+  console.log(xhrTwo.response);
+  stats.id = xhrTwo.response.data[0].id;
+  x = stats.id.toString();
+  statsCallBack();
+});
+
+var xhrThree = new XMLHttpRequest();
+var x = stats.id.toString();
+
+function statsCallBack() {
+  xhrThree.open('GET', 'https://www.balldontlie.io/api/v1/season_averages?season=2019&player_ids[]=' + x);
+  xhrThree.responseType = 'json';
+  xhrThree.send();
+}
+
+xhrThree.addEventListener('load', function (event) {
+  console.log(xhrThree.response);
+  stats.ppg = xhrThree.response.data[0].pts;
+  stats.percent = xhrThree.response.data[0].fg_pct;
+  stats.min = xhrThree.response.data[0].min;
+  stats.reb = xhrThree.response.data[0].reb;
+  stats.assist = xhrThree.response.data[0].ast;
+  stats.steal = xhrThree.response.data[0].stl;
+  stats.blocks = xhrThree.response.data[0].blk;
+  stats.turn = xhrThree.response.data[0].turnover;
+  $appendStatsDiv.appendChild(statsRender(stats));
+});
+
+function statsRender() {
+  var $statsContainer = document.createElement('div');
+  $statsContainer.setAttribute('class', 'append-stats');
+  var $statsRowOne = document.createElement('p');
+  $statsRowOne.setAttribute('class', 'row stats-row');
+  $statsRowOne.appendChild(document.createTextNode('NAME:' + ' ' + stats.name));
+  $statsContainer.appendChild($statsRowOne);
+
+  var $statsRowTwo = document.createElement('p');
+  $statsRowTwo.setAttribute('class', 'row stats-row');
+  $statsRowTwo.appendChild(document.createTextNode('POINTS:' + ' ' + stats.ppg.toString()));
+  $statsContainer.appendChild($statsRowTwo);
+
+  var $statsRowThree = document.createElement('p');
+  $statsRowThree.setAttribute('class', 'row stats-row');
+  $statsRowThree.appendChild(document.createTextNode('FG %:' + ' ' + stats.percent.toString()));
+  $statsContainer.appendChild($statsRowThree);
+
+  var $statsRowFour = document.createElement('p');
+  $statsRowFour.setAttribute('class', 'row stats-row');
+  $statsRowFour.appendChild(document.createTextNode('MINUTES:' + ' ' + stats.min));
+  $statsContainer.appendChild($statsRowFour);
+
+  var $statsRowFive = document.createElement('p');
+  $statsRowFive.setAttribute('class', 'row stats-row');
+  $statsRowFive.appendChild(document.createTextNode('REBOUNDS:' + ' ' + stats.reb.toString()));
+  $statsContainer.appendChild($statsRowFive);
+
+  var $statsRowSix = document.createElement('p');
+  $statsRowSix.setAttribute('class', 'row stats-row');
+  $statsRowSix.appendChild(document.createTextNode('ASSISTS:' + ' ' + stats.assist.toString()));
+  $statsContainer.appendChild($statsRowSix);
+
+  var $statsRowSeven = document.createElement('p');
+  $statsRowSeven.setAttribute('class', 'row stats-row');
+  $statsRowSeven.appendChild(document.createTextNode('STEALS:' + ' ' + stats.steal.toString()));
+  $statsContainer.appendChild($statsRowSeven);
+
+  var $statsRowEight = document.createElement('p');
+  $statsRowEight.setAttribute('class', 'row stats-row');
+  $statsRowEight.appendChild(document.createTextNode('BLOCKS:' + '    ' + stats.blocks.toString()));
+  $statsContainer.appendChild($statsRowEight);
+
+  var $statsRowNine = document.createElement('p');
+  $statsRowNine.setAttribute('class', 'row stats-row');
+  $statsRowNine.appendChild(document.createTextNode('TURNOVERS:' + ' ' + stats.turn.toString()));
+  $statsContainer.appendChild($statsRowNine);
+
+  return $statsContainer;
+}
 
 document.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.rankings.length; i++) {
@@ -144,6 +239,10 @@ function appendSearch() {
   }
 }
 
+$playerStatsButton.addEventListener('click', function (event) {
+  viewSwap(8);
+});
+
 $myProfileButton[1].addEventListener('click', function (event) {
   viewSwap(3);
 });
@@ -171,6 +270,7 @@ $homeButtonI.addEventListener('click', function (event) {
   $createRankingListRender.innerHTML = '';
   listNumber = 1;
   listNumberString = listNumber.toString();
+  $appendStatsDiv.innerHTML = '';
 });
 
 $loginButton.addEventListener('click', function (event) {
