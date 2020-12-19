@@ -62,9 +62,9 @@ xhrTwo.addEventListener('load', function (event) {
 });
 
 var xhrThree = new XMLHttpRequest();
-var x = stats.id.toString();
 
 function statsCallBack() {
+  var x = stats.id.toString();
   xhrThree.open('GET', 'https://www.balldontlie.io/api/v1/season_averages?season=2019&player_ids[]=' + x);
   xhrThree.responseType = 'json';
   xhrThree.send();
