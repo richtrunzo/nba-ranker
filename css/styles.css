@@ -104,6 +104,23 @@ h1 {
   padding-bottom: 5%;
 }
 
+.my-profile-container {
+  margin: 0 auto;
+  width: 90%;
+  background-color: #17408b;
+  border-color: black;
+  border-width: thick;
+  border-radius: 1rem;
+  border-style: solid;
+  margin-top: 30px;
+}
+
+.row-profile {
+  font-family: 'Orbitron', Arial, Helvetica, sans-serif;
+  margin-left: 5px;
+  color: #fafafa;
+}
+
 /* homepage  */
 
 .homepage-btn {

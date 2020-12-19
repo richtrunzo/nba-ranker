@@ -56,7 +56,6 @@ $statsSearchButton.addEventListener('click', function (event) {
 });
 
 xhrTwo.addEventListener('load', function (event) {
-  console.log(xhrTwo.response);
   stats.id = xhrTwo.response.data[0].id;
   x = stats.id.toString();
   statsCallBack();
@@ -72,7 +71,6 @@ function statsCallBack() {
 }
 
 xhrThree.addEventListener('load', function (event) {
-  console.log(xhrThree.response);
   stats.ppg = xhrThree.response.data[0].pts;
   stats.percent = xhrThree.response.data[0].fg_pct;
   stats.min = xhrThree.response.data[0].min;
@@ -338,6 +336,7 @@ function viewSwap(view) {
 
 function profileRender() {
   var $container = document.createElement('div');
+  $container.setAttribute('class', 'my-profile-container');
 
   var $divOne = document.createElement('div');
   $divOne.setAttribute('class', 'row-profile');
