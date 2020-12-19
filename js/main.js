@@ -86,7 +86,7 @@ function statsRender() {
   $statsContainer.setAttribute('class', 'append-stats');
   var $statsRowOne = document.createElement('p');
   $statsRowOne.setAttribute('class', 'row stats-row');
-  $statsRowOne.appendChild(document.createTextNode('NAME:' + ' ' + stats.name));
+  $statsRowOne.appendChild(document.createTextNode(stats.name));
   $statsContainer.appendChild($statsRowOne);
 
   var $statsRowTwo = document.createElement('p');
