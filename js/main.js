@@ -30,6 +30,9 @@ var $statsSearchInput = document.querySelector('.stats-search-input');
 var $statsSearchButton = document.querySelector('.stats-search-button');
 var $appendStatsDiv = document.querySelector('.append-stats-container');
 
+var $teamSearchInput = document.querySelector('.ranking-search-team');
+var $teamSearchButton = document.querySelector('.ranking-search-btn-team');
+
 var $view = document.querySelectorAll('.view');
 
 document.addEventListener('DOMContentLoaded', function (event) {
@@ -204,6 +207,36 @@ $searchResultsContainer.addEventListener('click', function (event) {
   listNumberString = listNumber.toString();
   viewSwap(5);
 });
+
+var xhrTeam = new XMLHttpRequest();
+
+$teamSearchButton.addEventListener('click', function (event) {
+  $searchResultsContainer.innerHTML = '';
+  searchResults.search.team = $teamSearchInput.value;
+  viewSwap(6);
+  xhrTeam.open('GET', 'https://www.balldontlie.io/api/v1/teams');
+  xhrTeam.responseType = 'json';
+  xhrTeam.send();
+  event.preventDefault();
+});
+
+xhrTeam.addEventListener('load', function (event) {
+  for (var i = 0; i < xhrTeam.response.data.length; i++) {
+    if (searchResults.search.team === xhrTeam.response.data[i].city || searchResults.search.team === xhrTeam.response.data[i].name || searchResults.search.team === xhrTeam.response.data[i].full_name || searchResults.search.team === xhrTeam.response.data[i].city.toLowerCase() || searchResults.search.team === xhrTeam.response.data[i].name.toLowerCase() || searchResults.search.team === xhrTeam.response.data[i].full_name.toLowerCase()) {
+      $searchResultsContainer.appendChild(appendTeamSearch(i));
+    }
+  }
+});
+
+function appendTeamSearch(index) {
+  var $div = document.createElement('div');
+  $div.setAttribute('class', 'row');
+  var $text = document.createElement('p');
+  $text.setAttribute('class', 'text search-result');
+  $text.appendChild(document.createTextNode(xhrTeam.response.data[index].full_name));
+  $div.appendChild($text);
+  return $div;
+}
 
 var xhr = new XMLHttpRequest();
 
