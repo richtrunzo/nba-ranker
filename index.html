@@ -11,6 +11,7 @@
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
 </head>
 <body>
   <header>
@@ -109,12 +110,16 @@
           <textarea class="ranking-description" placeholder="Description" required></textarea>
         </div>
         <div class="row-four">
-          <input id="search-for-players" type="search" class="ranking-search" placeholder="Search for players">
+          <input id="search-for-players" type="search" class="ranking-search" placeholder="Search by player name">
           <button class="ranking-search-btn">Search</button>
+        </div>
+        <div class="row-five">
+          <input id="search-for-teams" type="search" class="ranking-search-team" placeholder="Search by team name (e.g. Lakers)">
+          <button class="ranking-search-btn-team">Search</button>
         </div>
         <div class="list-render"></div>
         <div class="row-six">
-          <button class="ranking-submit-btn text">SUBMIT</button>
+          <button class="ranking-submit-btn text">SAVE RANKING</button>
         </div>
       </form>
     </div>

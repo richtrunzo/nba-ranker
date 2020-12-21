@@ -104,6 +104,23 @@ h1 {
   padding-bottom: 5%;
 }
 
+.my-profile-container {
+  margin: 0 auto;
+  width: 90%;
+  background-color: #17408b;
+  border-color: black;
+  border-width: thick;
+  border-radius: 1rem;
+  border-style: solid;
+  margin-top: 30px;
+}
+
+.row-profile {
+  font-family: 'Orbitron', Arial, Helvetica, sans-serif;
+  margin-left: 5px;
+  color: #fafafa;
+}
+
 /* homepage  */
 
 .homepage-btn {
@@ -119,7 +136,11 @@ h1 {
 
 /* Create Ranking */
 
-.ranking-title,
+.ranking-title{
+  width: 90%;
+  margin-top: 2px;
+
+}
 .ranking-description {
   width: 90%;
   margin-top: 10px;
@@ -156,6 +177,21 @@ h1 {
 
 .search-result:hover {
   color: #17408b;
+}
+
+.ranking-search-team {
+  width: 65%;
+  margin-top: 10px;
+}
+
+.ranking-search-btn-team {
+  background-color: #17408b;
+  color: #fafafa;
+  font-family: 'Sport', Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  margin-top: 10px;
+  width: 20%;
+  margin-left: 20px;
 }
 
 /* Search results page */
@@ -214,4 +250,98 @@ h1 {
 
 .stats-search-input {
   width: 70%;
+}
+
+
+
+
+
+@media screen and (min-width: 750px) {
+ .homepage-btn {
+   width: 50%;
+   padding-top: 5%;
+   padding-bottom: 5%;
+ }
+
+ .profile-btn {
+   width: 30%;
+   padding-top: 2%;
+   padding-bottom: 2%;
+ }
+
+ .my-profile-container {
+   width: 50%;
+ }
+
+.saved-ranking-container {
+  width: 50%;
+}
+
+.ranking-title {
+  width: 50%;
+  margin-top: 20px;
+}
+
+.ranking-description {
+  width: 50%;
+  margin-top: 20px;
+}
+
+.ranking-search {
+  width: 38%;
+  margin-top: 20px;
+}
+
+.ranking-search-btn {
+  width: 10%;
+  margin-top: 20px;
+
+}
+
+.ranking-search-team {
+  width: 38%;
+  margin-top: 20px;
+
+}
+
+.ranking-search-btn-team {
+  width: 10%;
+  margin-top: 20px;
+}
+
+.ranking-submit-btn {
+  width: 50%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.stats-search-input {
+  width: 40%;
+}
+
+.append-stats {
+  width: 60%;
+}
+
+.stats-row {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 80%;
+  font-size: 20px;
+}
+}
+
+
+@media screen and (min-width: 1400px) {
+  .stats-row {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 80%;
+  font-size: 30px;
+}
+
+.append-stats {
+  width: 30%;
+}
+
 }

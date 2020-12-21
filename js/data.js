@@ -15,7 +15,8 @@ var searchResults = {
     name: null,
     title: null,
     description: null,
-    list: null
+    list: null,
+    team: null
   },
   results: []
 };

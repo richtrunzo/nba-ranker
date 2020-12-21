@@ -30,6 +30,9 @@ var $statsSearchInput = document.querySelector('.stats-search-input');
 var $statsSearchButton = document.querySelector('.stats-search-button');
 var $appendStatsDiv = document.querySelector('.append-stats-container');
 
+var $teamSearchInput = document.querySelector('.ranking-search-team');
+var $teamSearchButton = document.querySelector('.ranking-search-btn-team');
+
 var $view = document.querySelectorAll('.view');
 
 document.addEventListener('DOMContentLoaded', function (event) {
@@ -53,23 +56,21 @@ $statsSearchButton.addEventListener('click', function (event) {
 });
 
 xhrTwo.addEventListener('load', function (event) {
-  console.log(xhrTwo.response);
   stats.id = xhrTwo.response.data[0].id;
   x = stats.id.toString();
   statsCallBack();
 });
 
 var xhrThree = new XMLHttpRequest();
-var x = stats.id.toString();
 
 function statsCallBack() {
+  var x = stats.id.toString();
   xhrThree.open('GET', 'https://www.balldontlie.io/api/v1/season_averages?season=2019&player_ids[]=' + x);
   xhrThree.responseType = 'json';
   xhrThree.send();
 }
 
 xhrThree.addEventListener('load', function (event) {
-  console.log(xhrThree.response);
   stats.ppg = xhrThree.response.data[0].pts;
   stats.percent = xhrThree.response.data[0].fg_pct;
   stats.min = xhrThree.response.data[0].min;
@@ -86,7 +87,7 @@ function statsRender() {
   $statsContainer.setAttribute('class', 'append-stats');
   var $statsRowOne = document.createElement('p');
   $statsRowOne.setAttribute('class', 'row stats-row');
-  $statsRowOne.appendChild(document.createTextNode('NAME:' + ' ' + stats.name));
+  $statsRowOne.appendChild(document.createTextNode(stats.name));
   $statsContainer.appendChild($statsRowOne);
 
   var $statsRowTwo = document.createElement('p');
@@ -205,6 +206,36 @@ $searchResultsContainer.addEventListener('click', function (event) {
   viewSwap(5);
 });
 
+var xhrTeam = new XMLHttpRequest();
+
+$teamSearchButton.addEventListener('click', function (event) {
+  $searchResultsContainer.innerHTML = '';
+  searchResults.search.team = $teamSearchInput.value;
+  viewSwap(6);
+  xhrTeam.open('GET', 'https://www.balldontlie.io/api/v1/teams');
+  xhrTeam.responseType = 'json';
+  xhrTeam.send();
+  event.preventDefault();
+});
+
+xhrTeam.addEventListener('load', function (event) {
+  for (var i = 0; i < xhrTeam.response.data.length; i++) {
+    if (searchResults.search.team === xhrTeam.response.data[i].city || searchResults.search.team === xhrTeam.response.data[i].name || searchResults.search.team === xhrTeam.response.data[i].full_name || searchResults.search.team === xhrTeam.response.data[i].city.toLowerCase() || searchResults.search.team === xhrTeam.response.data[i].name.toLowerCase() || searchResults.search.team === xhrTeam.response.data[i].full_name.toLowerCase()) {
+      $searchResultsContainer.appendChild(appendTeamSearch(i));
+    }
+  }
+});
+
+function appendTeamSearch(index) {
+  var $div = document.createElement('div');
+  $div.setAttribute('class', 'row');
+  var $text = document.createElement('p');
+  $text.setAttribute('class', 'text search-result');
+  $text.appendChild(document.createTextNode(xhrTeam.response.data[index].full_name));
+  $div.appendChild($text);
+  return $div;
+}
+
 var xhr = new XMLHttpRequest();
 
 $rankingSearchButton.addEventListener('click', function (event) {
@@ -305,6 +336,7 @@ function viewSwap(view) {
 
 function profileRender() {
   var $container = document.createElement('div');
+  $container.setAttribute('class', 'my-profile-container');
 
   var $divOne = document.createElement('div');
   $divOne.setAttribute('class', 'row-profile');
