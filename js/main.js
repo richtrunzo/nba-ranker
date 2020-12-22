@@ -1,23 +1,17 @@
 var $homeButtonI = document.querySelector('i');
 var $myProfileBtnHome = document.querySelector('.my-profile-btn-home');
-var $myProfileContainer = document.querySelector('.myprofile-container');
 var $createRankingButton = document.querySelector('.create-ranking-btn');
 var $rankingSearchButton = document.querySelector('.ranking-search-btn');
 var $rankingSearchInput = document.querySelector('.ranking-search');
 var $searchResultsContainer = document.querySelector('.results-container');
 var $createRankingListRender = document.querySelector('.list-render');
-
-var $myRankingsButton = document.querySelectorAll('.my-rankings-button');
-var $myProfileButton = document.querySelectorAll('.my-profile-btn');
 var $createRankingForm = document.querySelector('.create-ranking-form');
 var $rankingTitle = document.querySelector('.ranking-title');
 var $rankingDescription = document.querySelector('.ranking-description');
-
 var $playerStatsButton = document.querySelector('.player-stats-btn');
 var $statsSearchInput = document.querySelector('.stats-search-input');
 var $statsSearchButton = document.querySelector('.stats-search-button');
 var $appendStatsDiv = document.querySelector('.append-stats-container');
-
 var $teamSearchInput = document.querySelector('.ranking-search-team');
 var $teamSearchButton = document.querySelector('.ranking-search-btn-team');
 
@@ -40,11 +34,11 @@ $statsSearchButton.addEventListener('click', function (event) {
 xhrTwo.addEventListener('load', function (event) {
   if (xhrTwo.response.data[0] === undefined) {
     var $failedSearchResponse = document.createElement('div');
-    $failedSearchResponse.setAttribute('class', 'row text');
+    $failedSearchResponse.setAttribute('class', 'failed-row text');
     var $failedSearchResponseText = document.createElement('p');
     $failedSearchResponseText.appendChild(document.createTextNode('Data not found'));
     var $failedSearchResponseTwo = document.createElement('div');
-    $failedSearchResponseTwo.setAttribute('class', 'row text');
+    $failedSearchResponseTwo.setAttribute('class', 'failed-row text');
     var $failedSearchResponseTextSecondLine = document.createElement('p');
     $failedSearchResponseTextSecondLine.appendChild(document.createTextNode('Please search for a current NBA player'));
     $failedSearchResponse.appendChild($failedSearchResponseText);
@@ -70,11 +64,11 @@ function statsCallBack() {
 xhrThree.addEventListener('load', function (event) {
   if (xhrThree.response.data[0] === undefined) {
     var $failedSearchResponse = document.createElement('div');
-    $failedSearchResponse.setAttribute('class', 'row text');
+    $failedSearchResponse.setAttribute('class', 'failed-row text');
     var $failedSearchResponseText = document.createElement('p');
     $failedSearchResponseText.appendChild(document.createTextNode('Data not found'));
     var $failedSearchResponseTwo = document.createElement('div');
-    $failedSearchResponseTwo.setAttribute('class', 'row text');
+    $failedSearchResponseTwo.setAttribute('class', 'failed-row text');
     var $failedSearchResponseTextSecondLine = document.createElement('p');
     $failedSearchResponseTextSecondLine.appendChild(document.createTextNode('Please search for a current NBA player'));
     $failedSearchResponse.appendChild($failedSearchResponseText);
@@ -234,8 +228,10 @@ xhrTeam.addEventListener('load', function (event) {
   for (var i = 0; i < xhrTeam.response.data.length; i++) {
     if (searchResults.search.team === xhrTeam.response.data[i].city || searchResults.search.team === xhrTeam.response.data[i].name || searchResults.search.team === xhrTeam.response.data[i].full_name || searchResults.search.team === xhrTeam.response.data[i].city.toLowerCase() || searchResults.search.team === xhrTeam.response.data[i].name.toLowerCase() || searchResults.search.team === xhrTeam.response.data[i].full_name.toLowerCase()) {
       $searchResultsContainer.appendChild(appendTeamSearch(i));
+      return;
     }
   }
+  $searchResultsContainer.appendChild(failedRankingRender());
 });
 
 function appendTeamSearch(index) {
@@ -261,9 +257,13 @@ $rankingSearchButton.addEventListener('click', function (event) {
 });
 
 xhr.addEventListener('load', function (event) {
-  searchResults.results = [];
-  searchResults.results.push(xhr.response);
-  appendSearch();
+  if (xhr.response.data[0] === undefined) {
+    $searchResultsContainer.appendChild(failedRankingRender());
+  } else {
+    searchResults.results = [];
+    searchResults.results.push(xhr.response);
+    appendSearch();
+  }
 });
 
 function appendSearch() {
@@ -280,6 +280,24 @@ function appendSearch() {
   for (var i = 0; i < arr.length; i++) {
     $searchResultsContainer.appendChild(arr[i]);
   }
+}
+
+function failedRankingRender() {
+  var $failedContainer = document.createElement('div');
+  var $failedSearchResponse = document.createElement('div');
+  $failedSearchResponse.setAttribute('class', 'failed-row text');
+  var $failedSearchResponseText = document.createElement('p');
+  $failedSearchResponseText.appendChild(document.createTextNode('Data not found'));
+  var $failedSearchResponseTwo = document.createElement('div');
+  $failedSearchResponseTwo.setAttribute('class', 'failed-row text');
+  var $failedSearchResponseTextSecondLine = document.createElement('p');
+  $failedSearchResponseTextSecondLine.appendChild(document.createTextNode('Please click the home button above and try your search again'));
+  $failedSearchResponse.appendChild($failedSearchResponseText);
+  $failedSearchResponseTwo.appendChild($failedSearchResponseTextSecondLine);
+  $failedContainer.appendChild($failedSearchResponse);
+  $failedContainer.appendChild($failedSearchResponseTwo);
+
+  return $failedContainer;
 }
 
 $playerStatsButton.addEventListener('click', function (event) {
