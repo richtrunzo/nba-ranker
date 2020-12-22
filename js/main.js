@@ -37,9 +37,9 @@ var $view = document.querySelectorAll('.view');
 
 document.addEventListener('DOMContentLoaded', function (event) {
   if (data.profile.username !== null) {
-    viewSwap(3);
+    viewSwap(2);
     $myProfileContainer.innerHTML = '';
-    $view[3].appendChild(profileRender(data));
+    $view[2].appendChild(profileRender(data));
   } else if (data.profile.username === null) {
     viewSwap(0);
   }
@@ -135,7 +135,7 @@ function statsRender() {
 
 document.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.rankings.length; i++) {
-    $view[7].appendChild(showRankingRender(i));
+    $view[6].appendChild(showRankingRender(i));
   }
 });
 
@@ -165,8 +165,8 @@ $createRankingForm.addEventListener('submit', function (event) {
   searchResults.search.list = $createRankingListRender.innerHTML;
   data.rankings.push(searchResults.search);
   event.preventDefault();
-  $view[7].appendChild(saveRankingRender(searchResults));
-  viewSwap(7);
+  $view[6].appendChild(saveRankingRender(searchResults));
+  viewSwap(6);
 });
 
 function saveRankingRender() {
@@ -203,7 +203,7 @@ $searchResultsContainer.addEventListener('click', function (event) {
   $createRankingListRender.appendChild($playerDiv);
   listNumber++;
   listNumberString = listNumber.toString();
-  viewSwap(5);
+  viewSwap(4);
 });
 
 var xhrTeam = new XMLHttpRequest();
@@ -211,7 +211,7 @@ var xhrTeam = new XMLHttpRequest();
 $teamSearchButton.addEventListener('click', function (event) {
   $searchResultsContainer.innerHTML = '';
   searchResults.search.team = $teamSearchInput.value;
-  viewSwap(6);
+  viewSwap(5);
   xhrTeam.open('GET', 'https://www.balldontlie.io/api/v1/teams');
   xhrTeam.responseType = 'json';
   xhrTeam.send();
@@ -241,7 +241,7 @@ var xhr = new XMLHttpRequest();
 $rankingSearchButton.addEventListener('click', function (event) {
   $searchResultsContainer.innerHTML = '';
   searchResults.search.name = $rankingSearchInput.value;
-  viewSwap(6);
+  viewSwap(5);
   xhr.open('GET', 'https://www.balldontlie.io/api/v1/players?search=' + searchResults.search.name);
   xhr.responseType = 'json';
   xhr.send();
@@ -271,30 +271,30 @@ function appendSearch() {
 }
 
 $playerStatsButton.addEventListener('click', function (event) {
-  viewSwap(8);
-});
-
-$myProfileButton[1].addEventListener('click', function (event) {
-  viewSwap(3);
-});
-
-$myRankingsButton[0].addEventListener('click', function (event) {
   viewSwap(7);
 });
 
+$myProfileButton[1].addEventListener('click', function (event) {
+  viewSwap(2);
+});
+
+$myRankingsButton[0].addEventListener('click', function (event) {
+  viewSwap(6);
+});
+
 $createRankingButton.addEventListener('click', function (event) {
-  viewSwap(5);
+  viewSwap(4);
 });
 
 $myProfileBtnHome.addEventListener('click', function (event) {
-  viewSwap(3);
+  viewSwap(2);
 });
 
 $homeButtonI.addEventListener('click', function (event) {
   if (data.profile.username === null) {
     viewSwap(0);
   } else if (data.profile.username !== null) {
-    viewSwap(4);
+    viewSwap(3);
   }
   searchResults.results = [];
   $searchResultsContainer.innerHTML = '';
@@ -304,16 +304,8 @@ $homeButtonI.addEventListener('click', function (event) {
   $appendStatsDiv.innerHTML = '';
 });
 
-$loginButton.addEventListener('click', function (event) {
-  viewSwap(1);
-});
-
 $signupButton.addEventListener('click', function (event) {
-  viewSwap(2);
-});
-
-$loginForm.addEventListener('submit', function (event) {
-  viewSwap(3);
+  viewSwap(1);
 });
 
 $signupForm.addEventListener('submit', function (event) {
@@ -322,7 +314,7 @@ $signupForm.addEventListener('submit', function (event) {
   data.profile.username = $signupUsername.value;
   data.profile.password = $signupPassword.value;
   data.profile.team = $signupTeam.value;
-  viewSwap(3);
+  viewSwap(2);
   event.preventDefault();
   $myProfileContainer.appendChild(profileRender(data));
 });
