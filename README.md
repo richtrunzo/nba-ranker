@@ -1,4 +1,4 @@
-# nba-Ranker
+# nba-ranker
 
 A mobile-first AJAX application created to allow users to rank NBA teams and players, and also view NBA player stats in real-time.
 
