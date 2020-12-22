@@ -30,42 +30,6 @@ h1 {
   font-size: 20px;
 }
 
-/* home login page (first page you see) */
-
-.signup-btn {
-  background-color: #17408b;
-  color: #fafafa;
-  font-family: 'Sport', Arial, Helvetica, sans-serif;
-  font-size: 50px;
-  width: 90%;
-  margin-top: 15%;
-  padding-top: 15%;
-  padding-bottom: 15%;
-}
-
-/* Create account page */
-
-.create-an-account-text {
-  font-family: 'Sport', Arial, Helvetica, sans-serif;
-}
-
-.signup-input {
-  margin-top: 10px;
-  width: 80%;
-  font-size: 25px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.signup-submit-btn {
-  background-color: #17408b;
-  color: #fafafa;
-  font-family: 'Sport', Arial, Helvetica, sans-serif;
-  font-size: 50px;
-  width: 80%;
-  margin-top: 15%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-}
 
 /* My Profile */
 

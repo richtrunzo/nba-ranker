@@ -1,15 +1,3 @@
-var $loginButton = document.querySelector('.login-btn');
-var $signupButton = document.querySelector('.signup-btn');
-
-var $loginForm = document.querySelector('.login-form');
-
-var $signupForm = document.querySelector('.signup-form');
-var $signupName = document.querySelector('.signup-name');
-var $signupEmail = document.querySelector('.signup-email');
-var $signupUsername = document.querySelector('.signup-username');
-var $signupPassword = document.querySelector('.signup-password');
-var $signupTeam = document.querySelector('.signup-team');
-
 var $homeButtonI = document.querySelector('i');
 var $myProfileBtnHome = document.querySelector('.my-profile-btn-home');
 var $myProfileContainer = document.querySelector('.myprofile-container');
@@ -36,13 +24,7 @@ var $teamSearchButton = document.querySelector('.ranking-search-btn-team');
 var $view = document.querySelectorAll('.view');
 
 document.addEventListener('DOMContentLoaded', function (event) {
-  if (data.profile.username !== null) {
-    viewSwap(2);
-    $myProfileContainer.innerHTML = '';
-    $view[2].appendChild(profileRender(data));
-  } else if (data.profile.username === null) {
-    viewSwap(0);
-  }
+  viewSwap(0);
 });
 
 var xhrTwo = new XMLHttpRequest();
@@ -135,7 +117,7 @@ function statsRender() {
 
 document.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.rankings.length; i++) {
-    $view[6].appendChild(showRankingRender(i));
+    $view[3].appendChild(showRankingRender(i));
   }
 });
 
@@ -165,8 +147,8 @@ $createRankingForm.addEventListener('submit', function (event) {
   searchResults.search.list = $createRankingListRender.innerHTML;
   data.rankings.push(searchResults.search);
   event.preventDefault();
-  $view[6].appendChild(saveRankingRender(searchResults));
-  viewSwap(6);
+  $view[3].appendChild(saveRankingRender(searchResults));
+  viewSwap(3);
 });
 
 function saveRankingRender() {
@@ -203,7 +185,7 @@ $searchResultsContainer.addEventListener('click', function (event) {
   $createRankingListRender.appendChild($playerDiv);
   listNumber++;
   listNumberString = listNumber.toString();
-  viewSwap(4);
+  viewSwap(1);
 });
 
 var xhrTeam = new XMLHttpRequest();
@@ -211,7 +193,7 @@ var xhrTeam = new XMLHttpRequest();
 $teamSearchButton.addEventListener('click', function (event) {
   $searchResultsContainer.innerHTML = '';
   searchResults.search.team = $teamSearchInput.value;
-  viewSwap(5);
+  viewSwap(2);
   xhrTeam.open('GET', 'https://www.balldontlie.io/api/v1/teams');
   xhrTeam.responseType = 'json';
   xhrTeam.send();
@@ -241,7 +223,7 @@ var xhr = new XMLHttpRequest();
 $rankingSearchButton.addEventListener('click', function (event) {
   $searchResultsContainer.innerHTML = '';
   searchResults.search.name = $rankingSearchInput.value;
-  viewSwap(5);
+  viewSwap(2);
   xhr.open('GET', 'https://www.balldontlie.io/api/v1/players?search=' + searchResults.search.name);
   xhr.responseType = 'json';
   xhr.send();
@@ -271,31 +253,19 @@ function appendSearch() {
 }
 
 $playerStatsButton.addEventListener('click', function (event) {
-  viewSwap(7);
-});
-
-$myProfileButton[1].addEventListener('click', function (event) {
-  viewSwap(2);
-});
-
-$myRankingsButton[0].addEventListener('click', function (event) {
-  viewSwap(6);
-});
-
-$createRankingButton.addEventListener('click', function (event) {
   viewSwap(4);
 });
 
+$createRankingButton.addEventListener('click', function (event) {
+  viewSwap(1);
+});
+
 $myProfileBtnHome.addEventListener('click', function (event) {
-  viewSwap(2);
+  viewSwap(3);
 });
 
 $homeButtonI.addEventListener('click', function (event) {
-  if (data.profile.username === null) {
-    viewSwap(0);
-  } else if (data.profile.username !== null) {
-    viewSwap(3);
-  }
+  viewSwap(0);
   searchResults.results = [];
   $searchResultsContainer.innerHTML = '';
   $createRankingListRender.innerHTML = '';
@@ -304,60 +274,9 @@ $homeButtonI.addEventListener('click', function (event) {
   $appendStatsDiv.innerHTML = '';
 });
 
-$signupButton.addEventListener('click', function (event) {
-  viewSwap(1);
-});
-
-$signupForm.addEventListener('submit', function (event) {
-  data.profile.name = $signupName.value;
-  data.profile.email = $signupEmail.value;
-  data.profile.username = $signupUsername.value;
-  data.profile.password = $signupPassword.value;
-  data.profile.team = $signupTeam.value;
-  viewSwap(2);
-  event.preventDefault();
-  $myProfileContainer.appendChild(profileRender(data));
-});
-
 function viewSwap(view) {
   for (var i = 0; i < $view.length; i++) {
     $view[i].className = 'view hidden';
   }
   $view[view].className = 'view active';
-}
-
-function profileRender() {
-  var $container = document.createElement('div');
-  $container.setAttribute('class', 'my-profile-container');
-
-  var $divOne = document.createElement('div');
-  $divOne.setAttribute('class', 'row-profile');
-  var $name = document.createElement('h3');
-  $name.appendChild(document.createTextNode('NAME:' + '   ' + data.profile.name));
-  $divOne.appendChild($name);
-
-  var $divTwo = document.createElement('div');
-  $divTwo.setAttribute('class', 'row-profile');
-  var $userName = document.createElement('h3');
-  $userName.appendChild(document.createTextNode('USERNAME:' + '   ' + data.profile.username));
-  $divTwo.appendChild($userName);
-
-  var $divThree = document.createElement('div');
-  $divThree.setAttribute('class', 'row-profile');
-  var $email = document.createElement('h3');
-  $email.appendChild(document.createTextNode('EMAIL:' + '   ' + data.profile.email));
-  $divThree.appendChild($email);
-
-  var $divFour = document.createElement('div');
-  $divFour.setAttribute('class', 'row-profile');
-  var $team = document.createElement('h3');
-  $team.appendChild(document.createTextNode('TEAM:' + '   ' + data.profile.team));
-  $divFour.appendChild($team);
-
-  $container.appendChild($divOne);
-  $container.appendChild($divTwo);
-  $container.appendChild($divThree);
-  $container.appendChild($divFour);
-
-  return $container;
 }
