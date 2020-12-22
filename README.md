@@ -2,6 +2,7 @@
 
 A mobile-first AJAX application created to allow users to rank NBA teams and players, and also view NBA player stats in real-time.
 
+
 [Link to live demo](https://richtrunzo.github.io/nba-ranker/)
 
 Current feature List:
