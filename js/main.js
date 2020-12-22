@@ -38,9 +38,24 @@ $statsSearchButton.addEventListener('click', function (event) {
 });
 
 xhrTwo.addEventListener('load', function (event) {
-  stats.id = xhrTwo.response.data[0].id;
-  x = stats.id.toString();
-  statsCallBack();
+  if (xhrTwo.response.data[0] === undefined) {
+    var $failedSearchResponse = document.createElement('div');
+    $failedSearchResponse.setAttribute('class', 'row text');
+    var $failedSearchResponseText = document.createElement('p');
+    $failedSearchResponseText.appendChild(document.createTextNode('Data not found'));
+    var $failedSearchResponseTwo = document.createElement('div');
+    $failedSearchResponseTwo.setAttribute('class', 'row text');
+    var $failedSearchResponseTextSecondLine = document.createElement('p');
+    $failedSearchResponseTextSecondLine.appendChild(document.createTextNode('Please search for a current NBA player'));
+    $failedSearchResponse.appendChild($failedSearchResponseText);
+    $failedSearchResponseTwo.appendChild($failedSearchResponseTextSecondLine);
+    $appendStatsDiv.appendChild($failedSearchResponse);
+    $appendStatsDiv.appendChild($failedSearchResponseTwo);
+  } else {
+    stats.id = xhrTwo.response.data[0].id;
+    x = stats.id.toString();
+    statsCallBack();
+  }
 });
 
 var xhrThree = new XMLHttpRequest();
@@ -53,15 +68,30 @@ function statsCallBack() {
 }
 
 xhrThree.addEventListener('load', function (event) {
-  stats.ppg = xhrThree.response.data[0].pts;
-  stats.percent = xhrThree.response.data[0].fg_pct;
-  stats.min = xhrThree.response.data[0].min;
-  stats.reb = xhrThree.response.data[0].reb;
-  stats.assist = xhrThree.response.data[0].ast;
-  stats.steal = xhrThree.response.data[0].stl;
-  stats.blocks = xhrThree.response.data[0].blk;
-  stats.turn = xhrThree.response.data[0].turnover;
-  $appendStatsDiv.appendChild(statsRender(stats));
+  if (xhrThree.response.data[0] === undefined) {
+    var $failedSearchResponse = document.createElement('div');
+    $failedSearchResponse.setAttribute('class', 'row text');
+    var $failedSearchResponseText = document.createElement('p');
+    $failedSearchResponseText.appendChild(document.createTextNode('Data not found'));
+    var $failedSearchResponseTwo = document.createElement('div');
+    $failedSearchResponseTwo.setAttribute('class', 'row text');
+    var $failedSearchResponseTextSecondLine = document.createElement('p');
+    $failedSearchResponseTextSecondLine.appendChild(document.createTextNode('Please search for a current NBA player'));
+    $failedSearchResponse.appendChild($failedSearchResponseText);
+    $failedSearchResponseTwo.appendChild($failedSearchResponseTextSecondLine);
+    $appendStatsDiv.appendChild($failedSearchResponse);
+    $appendStatsDiv.appendChild($failedSearchResponseTwo);
+  } else {
+    stats.ppg = xhrThree.response.data[0].pts;
+    stats.percent = xhrThree.response.data[0].fg_pct;
+    stats.min = xhrThree.response.data[0].min;
+    stats.reb = xhrThree.response.data[0].reb;
+    stats.assist = xhrThree.response.data[0].ast;
+    stats.steal = xhrThree.response.data[0].stl;
+    stats.blocks = xhrThree.response.data[0].blk;
+    stats.turn = xhrThree.response.data[0].turnover;
+    $appendStatsDiv.appendChild(statsRender(stats));
+  }
 });
 
 function statsRender() {
