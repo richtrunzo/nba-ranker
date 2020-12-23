@@ -294,14 +294,8 @@ function failedRankingRender() {
   $failedSearchResponse.setAttribute('class', 'failed-row text');
   var $failedSearchResponseText = document.createElement('p');
   $failedSearchResponseText.appendChild(document.createTextNode('Data not found, click here to try your search again'));
-  // var $failedSearchResponseTwo = document.createElement('div');
-  // $failedSearchResponseTwo.setAttribute('class', 'failed-row text');
-  // var $failedSearchResponseTextSecondLine = document.createElement('p');
-  // $failedSearchResponseTextSecondLine.appendChild(document.createTextNode('Click here to try your search again'));
   $failedSearchResponse.appendChild($failedSearchResponseText);
-  // $failedSearchResponseTwo.appendChild($failedSearchResponseTextSecondLine);
   $failedContainer.appendChild($failedSearchResponse);
-  // $failedContainer.appendChild($failedSearchResponseTwo);
 
   return $failedContainer;
 }
