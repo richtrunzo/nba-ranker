@@ -1,6 +1,7 @@
 var $homeButtonI = document.querySelector('.header');
 var $myProfileBtnHome = document.querySelector('.my-profile-btn-home');
 var $createRankingButton = document.querySelector('.create-ranking-btn');
+var $savedRankings = document.querySelector('.saved-rankings');
 var $rankingSearchButton = document.querySelector('.ranking-search-btn');
 var $rankingSearchInput = document.querySelector('.ranking-search');
 var $searchResultsContainer = document.querySelector('.results-container');
@@ -141,8 +142,9 @@ function statsRender() {
 
 document.addEventListener('DOMContentLoaded', function (event) {
   if (data.rankings[0] === undefined) {
-    $view[3].appendChild(noRankingRender());
-  } else {
+    $savedRankings.appendChild(noRankingRender());
+  } else if (data.rankings[0] !== undefined) {
+    $savedRankings.innerHTML = '';
     for (var i = 0; i < data.rankings.length; i++) {
       $view[3].appendChild(showRankingRender(i));
     }
@@ -180,6 +182,7 @@ function showRankingRender(index) {
 }
 
 $createRankingForm.addEventListener('submit', function (event) {
+  $savedRankings.innerHTML = '';
   searchResults.search.title = $rankingTitle.value;
   searchResults.search.description = $rankingDescription.value;
   searchResults.search.list = $createRankingListRender.innerHTML;
