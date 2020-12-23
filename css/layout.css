@@ -24,6 +24,22 @@
   color: red;
 }
 
+.no-rankings-row {
+  font-family: 'Orbitron', Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 30px;
+  background-color: #17408b;
+  color: #fafafa;
+  border-radius: 1rem;
+  border-color: black;
+  border-style: solid;
+  border-width: thick;
+}
+
 .row-profile {
   display: flex;
   justify-content: flex-start;

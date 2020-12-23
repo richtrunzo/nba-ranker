@@ -140,10 +140,24 @@ function statsRender() {
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
-  for (var i = 0; i < data.rankings.length; i++) {
-    $view[3].appendChild(showRankingRender(i));
+  if (data.rankings[0] === undefined) {
+    $view[3].appendChild(noRankingRender());
+  } else {
+    for (var i = 0; i < data.rankings.length; i++) {
+      $view[3].appendChild(showRankingRender(i));
+    }
   }
 });
+
+function noRankingRender() {
+  var $containerDiv = document.createElement('div');
+  $containerDiv.setAttribute('class', 'text no-rankings-row');
+  var $noRankings = document.createElement('p');
+  $noRankings.appendChild(document.createTextNode('You have no saved rankings. Click the header above and navigate to the create rankings tab to create your first ranking.'));
+  $containerDiv.appendChild($noRankings);
+
+  return $containerDiv;
+}
 
 function showRankingRender(index) {
   var $mainDiv = document.createElement('div');
