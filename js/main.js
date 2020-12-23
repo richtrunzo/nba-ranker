@@ -1,4 +1,4 @@
-var $homeButtonI = document.querySelector('i');
+var $homeButtonI = document.querySelector('.header');
 var $myProfileBtnHome = document.querySelector('.my-profile-btn-home');
 var $createRankingButton = document.querySelector('.create-ranking-btn');
 var $rankingSearchButton = document.querySelector('.ranking-search-btn');
@@ -199,17 +199,22 @@ var listNumber = 1;
 var listNumberString = listNumber.toString();
 
 $searchResultsContainer.addEventListener('click', function (event) {
-  var $playerDiv = document.createElement('div');
-  var $playerText = document.createElement('p');
-  $playerText.appendChild(document.createTextNode(listNumberString + '.'));
-  $playerDiv.setAttribute('class', 'row text savelist');
-  $playerText.setAttribute('class', 'text-two player-number');
-  $playerDiv.appendChild($playerText);
-  $playerDiv.appendChild(event.target);
-  $createRankingListRender.appendChild($playerDiv);
-  listNumber++;
-  listNumberString = listNumber.toString();
-  viewSwap(1);
+  if ($searchResultsContainer.innerText === 'Data not found, click here to try your search again') {
+    viewSwap(1);
+  } else {
+    var $playerDiv = document.createElement('div');
+    var $playerText = document.createElement('p');
+    $playerText.appendChild(document.createTextNode(listNumberString + '.'));
+    $playerDiv.setAttribute('class', 'row text savelist');
+    $playerText.setAttribute('class', 'text-two player-number');
+    $playerDiv.appendChild($playerText);
+    $playerDiv.appendChild(event.target);
+    $createRankingListRender.appendChild($playerDiv);
+    listNumber++;
+    listNumberString = listNumber.toString();
+    viewSwap(1);
+    $createRankingForm.reset();
+  }
 });
 
 var xhrTeam = new XMLHttpRequest();
@@ -284,18 +289,19 @@ function appendSearch() {
 
 function failedRankingRender() {
   var $failedContainer = document.createElement('div');
+  $failedContainer.setAttribute('class', 'failed-container');
   var $failedSearchResponse = document.createElement('div');
   $failedSearchResponse.setAttribute('class', 'failed-row text');
   var $failedSearchResponseText = document.createElement('p');
-  $failedSearchResponseText.appendChild(document.createTextNode('Data not found'));
-  var $failedSearchResponseTwo = document.createElement('div');
-  $failedSearchResponseTwo.setAttribute('class', 'failed-row text');
-  var $failedSearchResponseTextSecondLine = document.createElement('p');
-  $failedSearchResponseTextSecondLine.appendChild(document.createTextNode('Please click the home button above and try your search again'));
+  $failedSearchResponseText.appendChild(document.createTextNode('Data not found, click here to try your search again'));
+  // var $failedSearchResponseTwo = document.createElement('div');
+  // $failedSearchResponseTwo.setAttribute('class', 'failed-row text');
+  // var $failedSearchResponseTextSecondLine = document.createElement('p');
+  // $failedSearchResponseTextSecondLine.appendChild(document.createTextNode('Click here to try your search again'));
   $failedSearchResponse.appendChild($failedSearchResponseText);
-  $failedSearchResponseTwo.appendChild($failedSearchResponseTextSecondLine);
+  // $failedSearchResponseTwo.appendChild($failedSearchResponseTextSecondLine);
   $failedContainer.appendChild($failedSearchResponse);
-  $failedContainer.appendChild($failedSearchResponseTwo);
+  // $failedContainer.appendChild($failedSearchResponseTwo);
 
   return $failedContainer;
 }
