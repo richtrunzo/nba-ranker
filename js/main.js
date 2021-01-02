@@ -1,30 +1,28 @@
-var $homeButtonI = document.querySelector('.header');
-var $myProfileBtnHome = document.querySelector('.my-profile-btn-home');
-var $createRankingButton = document.querySelector('.create-ranking-btn');
-var $savedRankings = document.querySelector('.saved-rankings');
-var $rankingSearchButton = document.querySelector('.ranking-search-btn');
-var $rankingSearchInput = document.querySelector('.ranking-search');
-var $searchResultsContainer = document.querySelector('.results-container');
-var $createRankingListRender = document.querySelector('.list-render');
-var $createRankingForm = document.querySelector('.create-ranking-form');
-var $rankingTitle = document.querySelector('.ranking-title');
-var $rankingDescription = document.querySelector('.ranking-description');
-var $playerStatsButton = document.querySelector('.player-stats-btn');
-var $statsSearchInput = document.querySelector('.stats-search-input');
-var $statsSearchButton = document.querySelector('.stats-search-button');
-var $appendStatsDiv = document.querySelector('.append-stats-container');
-var $teamSearchInput = document.querySelector('.ranking-search-team');
-var $teamSearchButton = document.querySelector('.ranking-search-btn-team');
+const $homeButtonI = document.querySelector('.header');
+const $myProfileBtnHome = document.querySelector('.my-profile-btn-home');
+const $createRankingButton = document.querySelector('.create-ranking-btn');
+const $savedRankings = document.querySelector('.saved-rankings');
+const $rankingSearchButton = document.querySelector('.ranking-search-btn');
+const $rankingSearchInput = document.querySelector('.ranking-search');
+const $searchResultsContainer = document.querySelector('.results-container');
+const $createRankingListRender = document.querySelector('.list-render');
+const $createRankingForm = document.querySelector('.create-ranking-form');
+const $rankingTitle = document.querySelector('.ranking-title');
+const $rankingDescription = document.querySelector('.ranking-description');
+const $playerStatsButton = document.querySelector('.player-stats-btn');
+const $statsSearchInput = document.querySelector('.stats-search-input');
+const $statsSearchButton = document.querySelector('.stats-search-button');
+const $appendStatsDiv = document.querySelector('.append-stats-container');
+const $teamSearchInput = document.querySelector('.ranking-search-team');
+const $teamSearchButton = document.querySelector('.ranking-search-btn-team');
 
-var $view = document.querySelectorAll('.view');
+const $view = document.querySelectorAll('.view');
 
-document.addEventListener('DOMContentLoaded', function (event) {
-  viewSwap(0);
-});
+document.addEventListener('DOMContentLoaded', () => { viewSwap(0); });
 
-var xhrTwo = new XMLHttpRequest();
+const xhrTwo = new XMLHttpRequest();
 
-$statsSearchButton.addEventListener('click', function (event) {
+$statsSearchButton.addEventListener('click', event => {
   $appendStatsDiv.innerHTML = ' ';
   stats.name = $statsSearchInput.value;
   xhrTwo.open('GET', 'https://www.balldontlie.io/api/v1/players?search=' + stats.name);
@@ -32,15 +30,15 @@ $statsSearchButton.addEventListener('click', function (event) {
   xhrTwo.send();
 });
 
-xhrTwo.addEventListener('load', function (event) {
+xhrTwo.addEventListener('load', event => {
   if (xhrTwo.response.data[0] === undefined) {
-    var $failedSearchResponse = document.createElement('div');
+    const $failedSearchResponse = document.createElement('div');
     $failedSearchResponse.setAttribute('class', 'failed-row text');
-    var $failedSearchResponseText = document.createElement('p');
+    const $failedSearchResponseText = document.createElement('p');
     $failedSearchResponseText.appendChild(document.createTextNode('Data not found'));
-    var $failedSearchResponseTwo = document.createElement('div');
+    const $failedSearchResponseTwo = document.createElement('div');
     $failedSearchResponseTwo.setAttribute('class', 'failed-row text');
-    var $failedSearchResponseTextSecondLine = document.createElement('p');
+    const $failedSearchResponseTextSecondLine = document.createElement('p');
     $failedSearchResponseTextSecondLine.appendChild(document.createTextNode('Please search for a current NBA player'));
     $failedSearchResponse.appendChild($failedSearchResponseText);
     $failedSearchResponseTwo.appendChild($failedSearchResponseTextSecondLine);
@@ -53,24 +51,24 @@ xhrTwo.addEventListener('load', function (event) {
   }
 });
 
-var xhrThree = new XMLHttpRequest();
+const xhrThree = new XMLHttpRequest();
 
 function statsCallBack() {
-  var x = stats.id.toString();
+  const x = stats.id.toString();
   xhrThree.open('GET', 'https://www.balldontlie.io/api/v1/season_averages?season=2019&player_ids[]=' + x);
   xhrThree.responseType = 'json';
   xhrThree.send();
 }
 
-xhrThree.addEventListener('load', function (event) {
+xhrThree.addEventListener('load', event => {
   if (xhrThree.response.data[0] === undefined) {
-    var $failedSearchResponse = document.createElement('div');
+    const $failedSearchResponse = document.createElement('div');
     $failedSearchResponse.setAttribute('class', 'failed-row text');
-    var $failedSearchResponseText = document.createElement('p');
+    const $failedSearchResponseText = document.createElement('p');
     $failedSearchResponseText.appendChild(document.createTextNode('Data not found'));
-    var $failedSearchResponseTwo = document.createElement('div');
+    const $failedSearchResponseTwo = document.createElement('div');
     $failedSearchResponseTwo.setAttribute('class', 'failed-row text');
-    var $failedSearchResponseTextSecondLine = document.createElement('p');
+    const $failedSearchResponseTextSecondLine = document.createElement('p');
     $failedSearchResponseTextSecondLine.appendChild(document.createTextNode('Please search for a current NBA player'));
     $failedSearchResponse.appendChild($failedSearchResponseText);
     $failedSearchResponseTwo.appendChild($failedSearchResponseTextSecondLine);
@@ -90,49 +88,49 @@ xhrThree.addEventListener('load', function (event) {
 });
 
 function statsRender() {
-  var $statsContainer = document.createElement('div');
+  const $statsContainer = document.createElement('div');
   $statsContainer.setAttribute('class', 'append-stats');
-  var $statsRowOne = document.createElement('p');
+  const $statsRowOne = document.createElement('p');
   $statsRowOne.setAttribute('class', 'row stats-row');
   $statsRowOne.appendChild(document.createTextNode(stats.name));
   $statsContainer.appendChild($statsRowOne);
 
-  var $statsRowTwo = document.createElement('p');
+  const $statsRowTwo = document.createElement('p');
   $statsRowTwo.setAttribute('class', 'row stats-row');
   $statsRowTwo.appendChild(document.createTextNode('POINTS:' + ' ' + stats.ppg.toString()));
   $statsContainer.appendChild($statsRowTwo);
 
-  var $statsRowThree = document.createElement('p');
+  const $statsRowThree = document.createElement('p');
   $statsRowThree.setAttribute('class', 'row stats-row');
   $statsRowThree.appendChild(document.createTextNode('FG %:' + ' ' + stats.percent.toString()));
   $statsContainer.appendChild($statsRowThree);
 
-  var $statsRowFour = document.createElement('p');
+  const $statsRowFour = document.createElement('p');
   $statsRowFour.setAttribute('class', 'row stats-row');
   $statsRowFour.appendChild(document.createTextNode('MINUTES:' + ' ' + stats.min));
   $statsContainer.appendChild($statsRowFour);
 
-  var $statsRowFive = document.createElement('p');
+  const $statsRowFive = document.createElement('p');
   $statsRowFive.setAttribute('class', 'row stats-row');
   $statsRowFive.appendChild(document.createTextNode('REBOUNDS:' + ' ' + stats.reb.toString()));
   $statsContainer.appendChild($statsRowFive);
 
-  var $statsRowSix = document.createElement('p');
+  const $statsRowSix = document.createElement('p');
   $statsRowSix.setAttribute('class', 'row stats-row');
   $statsRowSix.appendChild(document.createTextNode('ASSISTS:' + ' ' + stats.assist.toString()));
   $statsContainer.appendChild($statsRowSix);
 
-  var $statsRowSeven = document.createElement('p');
+  const $statsRowSeven = document.createElement('p');
   $statsRowSeven.setAttribute('class', 'row stats-row');
   $statsRowSeven.appendChild(document.createTextNode('STEALS:' + ' ' + stats.steal.toString()));
   $statsContainer.appendChild($statsRowSeven);
 
-  var $statsRowEight = document.createElement('p');
+  const $statsRowEight = document.createElement('p');
   $statsRowEight.setAttribute('class', 'row stats-row');
   $statsRowEight.appendChild(document.createTextNode('BLOCKS:' + '    ' + stats.blocks.toString()));
   $statsContainer.appendChild($statsRowEight);
 
-  var $statsRowNine = document.createElement('p');
+  const $statsRowNine = document.createElement('p');
   $statsRowNine.setAttribute('class', 'row stats-row');
   $statsRowNine.appendChild(document.createTextNode('TURNOVERS:' + ' ' + stats.turn.toString()));
   $statsContainer.appendChild($statsRowNine);
@@ -140,21 +138,21 @@ function statsRender() {
   return $statsContainer;
 }
 
-document.addEventListener('DOMContentLoaded', function (event) {
+document.addEventListener('DOMContentLoaded', event => {
   if (data.rankings[0] === undefined) {
     $savedRankings.appendChild(noRankingRender());
   } else if (data.rankings[0] !== undefined) {
     $savedRankings.innerHTML = '';
-    for (var i = 0; i < data.rankings.length; i++) {
+    for (let i = 0; i < data.rankings.length; i++) {
       $view[3].appendChild(showRankingRender(i));
     }
   }
 });
 
 function noRankingRender() {
-  var $containerDiv = document.createElement('div');
+  const $containerDiv = document.createElement('div');
   $containerDiv.setAttribute('class', 'text no-rankings-row');
-  var $noRankings = document.createElement('p');
+  const $noRankings = document.createElement('p');
   $noRankings.appendChild(document.createTextNode('You have no saved rankings. Click the header above and navigate to the create rankings tab to create your first ranking.'));
   $containerDiv.appendChild($noRankings);
 
@@ -162,18 +160,18 @@ function noRankingRender() {
 }
 
 function showRankingRender(index) {
-  var $mainDiv = document.createElement('div');
+  const $mainDiv = document.createElement('div');
   $mainDiv.setAttribute('class', 'myrankings-container row');
-  var $containerDiv = document.createElement('div');
+  const $containerDiv = document.createElement('div');
   $containerDiv.setAttribute('class', 'saved-ranking-container');
-  var $savedTitle = document.createElement('h3');
+  const $savedTitle = document.createElement('h3');
   $savedTitle.setAttribute('class', 'row');
   $savedTitle.appendChild(document.createTextNode(data.rankings[index].title));
-  var $savedDescription = document.createElement('p');
+  const $savedDescription = document.createElement('p');
   $savedDescription.setAttribute('class', 'row');
   $savedDescription.appendChild(document.createTextNode(data.rankings[index].description));
-  var $savedList = document.createRange();
-  var $frag = $savedList.createContextualFragment(data.rankings[index].list);
+  const $savedList = document.createRange();
+  const $frag = $savedList.createContextualFragment(data.rankings[index].list);
   $containerDiv.appendChild($savedTitle);
   $containerDiv.appendChild($savedDescription);
   $containerDiv.appendChild($frag);
@@ -181,7 +179,7 @@ function showRankingRender(index) {
   return $mainDiv;
 }
 
-$createRankingForm.addEventListener('submit', function (event) {
+$createRankingForm.addEventListener('submit', event => {
   $savedRankings.innerHTML = '';
   searchResults.search.title = $rankingTitle.value;
   searchResults.search.description = $rankingDescription.value;
@@ -193,18 +191,18 @@ $createRankingForm.addEventListener('submit', function (event) {
 });
 
 function saveRankingRender() {
-  var $mainDiv = document.createElement('div');
+  const $mainDiv = document.createElement('div');
   $mainDiv.setAttribute('class', 'myrankings-container row');
-  var $containerDiv = document.createElement('div');
+  const $containerDiv = document.createElement('div');
   $containerDiv.setAttribute('class', 'saved-ranking-container');
-  var $savedTitle = document.createElement('h3');
+  const $savedTitle = document.createElement('h3');
   $savedTitle.setAttribute('class', 'row');
   $savedTitle.appendChild(document.createTextNode(searchResults.search.title));
-  var $savedDescription = document.createElement('p');
+  const $savedDescription = document.createElement('p');
   $savedDescription.setAttribute('class', 'row');
   $savedDescription.appendChild(document.createTextNode(searchResults.search.description));
-  var $savedList = document.createRange();
-  var $frag = $savedList.createContextualFragment(searchResults.search.list);
+  const $savedList = document.createRange();
+  const $frag = $savedList.createContextualFragment(searchResults.search.list);
   $containerDiv.appendChild($savedTitle);
   $containerDiv.appendChild($savedDescription);
   $containerDiv.appendChild($frag);
@@ -212,15 +210,15 @@ function saveRankingRender() {
   return $mainDiv;
 }
 
-var listNumber = 1;
-var listNumberString = listNumber.toString();
+let listNumber = 1;
+let listNumberString = listNumber.toString();
 
-$searchResultsContainer.addEventListener('click', function (event) {
+$searchResultsContainer.addEventListener('click', event => {
   if ($searchResultsContainer.innerText === 'Data not found, click here to try your search again') {
     viewSwap(1);
   } else {
-    var $playerDiv = document.createElement('div');
-    var $playerText = document.createElement('p');
+    const $playerDiv = document.createElement('div');
+    const $playerText = document.createElement('p');
     $playerText.appendChild(document.createTextNode(listNumberString + '.'));
     $playerDiv.setAttribute('class', 'row text savelist');
     $playerText.setAttribute('class', 'text-two player-number');
@@ -234,9 +232,9 @@ $searchResultsContainer.addEventListener('click', function (event) {
   }
 });
 
-var xhrTeam = new XMLHttpRequest();
+const xhrTeam = new XMLHttpRequest();
 
-$teamSearchButton.addEventListener('click', function (event) {
+$teamSearchButton.addEventListener('click', event => {
   $searchResultsContainer.innerHTML = '';
   searchResults.search.team = $teamSearchInput.value;
   viewSwap(2);
@@ -246,8 +244,8 @@ $teamSearchButton.addEventListener('click', function (event) {
   event.preventDefault();
 });
 
-xhrTeam.addEventListener('load', function (event) {
-  for (var i = 0; i < xhrTeam.response.data.length; i++) {
+xhrTeam.addEventListener('load', event => {
+  for (let i = 0; i < xhrTeam.response.data.length; i++) {
     if (searchResults.search.team === xhrTeam.response.data[i].city || searchResults.search.team === xhrTeam.response.data[i].name || searchResults.search.team === xhrTeam.response.data[i].full_name || searchResults.search.team === xhrTeam.response.data[i].city.toLowerCase() || searchResults.search.team === xhrTeam.response.data[i].name.toLowerCase() || searchResults.search.team === xhrTeam.response.data[i].full_name.toLowerCase()) {
       $searchResultsContainer.appendChild(appendTeamSearch(i));
       return;
@@ -257,18 +255,18 @@ xhrTeam.addEventListener('load', function (event) {
 });
 
 function appendTeamSearch(index) {
-  var $div = document.createElement('div');
+  const $div = document.createElement('div');
   $div.setAttribute('class', 'row');
-  var $text = document.createElement('p');
+  const $text = document.createElement('p');
   $text.setAttribute('class', 'text search-result');
   $text.appendChild(document.createTextNode(xhrTeam.response.data[index].full_name));
   $div.appendChild($text);
   return $div;
 }
 
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 
-$rankingSearchButton.addEventListener('click', function (event) {
+$rankingSearchButton.addEventListener('click', event => {
   $searchResultsContainer.innerHTML = '';
   searchResults.search.name = $rankingSearchInput.value;
   viewSwap(2);
@@ -278,7 +276,7 @@ $rankingSearchButton.addEventListener('click', function (event) {
   event.preventDefault();
 });
 
-xhr.addEventListener('load', function (event) {
+xhr.addEventListener('load', event => {
   if (xhr.response.data[0] === undefined) {
     $searchResultsContainer.appendChild(failedRankingRender());
   } else {
@@ -289,27 +287,27 @@ xhr.addEventListener('load', function (event) {
 });
 
 function appendSearch() {
-  var arr = [];
-  for (var i = 0; i < searchResults.results[0].data.length; i++) {
-    var $div = document.createElement('div');
+  const arr = [];
+  for (let i = 0; i < searchResults.results[0].data.length; i++) {
+    const $div = document.createElement('div');
     $div.setAttribute('class', 'row');
-    var $text = document.createElement('p');
+    const $text = document.createElement('p');
     $text.setAttribute('class', 'text search-result');
     $text.appendChild(document.createTextNode(searchResults.results[0].data[i].first_name + ' ' + searchResults.results[0].data[i].last_name + ', ' + searchResults.results[0].data[i].team.name));
     $div.appendChild($text);
     arr.push($div);
   }
-  for (var i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     $searchResultsContainer.appendChild(arr[i]);
   }
 }
 
 function failedRankingRender() {
-  var $failedContainer = document.createElement('div');
+  const $failedContainer = document.createElement('div');
   $failedContainer.setAttribute('class', 'failed-container');
-  var $failedSearchResponse = document.createElement('div');
+  const $failedSearchResponse = document.createElement('div');
   $failedSearchResponse.setAttribute('class', 'failed-row text');
-  var $failedSearchResponseText = document.createElement('p');
+  const $failedSearchResponseText = document.createElement('p');
   $failedSearchResponseText.appendChild(document.createTextNode('Data not found, click here to try your search again'));
   $failedSearchResponse.appendChild($failedSearchResponseText);
   $failedContainer.appendChild($failedSearchResponse);
@@ -317,19 +315,19 @@ function failedRankingRender() {
   return $failedContainer;
 }
 
-$playerStatsButton.addEventListener('click', function (event) {
+$playerStatsButton.addEventListener('click', event => {
   viewSwap(4);
 });
 
-$createRankingButton.addEventListener('click', function (event) {
+$createRankingButton.addEventListener('click', event => {
   viewSwap(1);
 });
 
-$myProfileBtnHome.addEventListener('click', function (event) {
+$myProfileBtnHome.addEventListener('click', event => {
   viewSwap(3);
 });
 
-$homeButtonI.addEventListener('click', function (event) {
+$homeButtonI.addEventListener('click', event => {
   viewSwap(0);
   searchResults.results = [];
   $searchResultsContainer.innerHTML = '';
@@ -340,7 +338,7 @@ $homeButtonI.addEventListener('click', function (event) {
 });
 
 function viewSwap(view) {
-  for (var i = 0; i < $view.length; i++) {
+  for (let i = 0; i < $view.length; i++) {
     $view[i].className = 'view hidden';
   }
   $view[view].className = 'view active';

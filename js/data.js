@@ -1,16 +1,9 @@
 /* exported data */
-var data = {
-  // profile: {
-  //   name: null,
-  //   email: null,
-  //   username: null,
-  //   password: null,
-  //   team: null
-  // },
+let data = {
   rankings: []
 };
 
-var searchResults = {
+let searchResults = {
   search: {
     name: null,
     title: null,
@@ -21,7 +14,7 @@ var searchResults = {
   results: []
 };
 
-var stats = {
+let stats = {
   name: null,
   id: null,
   ppg: null,
@@ -34,32 +27,32 @@ var stats = {
   turn: null
 };
 
-var previousData = localStorage.getItem('profile-information');
+const previousData = localStorage.getItem('profile-information');
 if (previousData !== null) {
   data = JSON.parse(previousData);
 }
 
-window.addEventListener('beforeunload', function (event) {
-  var dataJSON = JSON.stringify(data);
+window.addEventListener('beforeunload', event => {
+  const dataJSON = JSON.stringify(data);
   localStorage.setItem('profile-information', dataJSON);
 });
 
-var previousSearchData = localStorage.getItem('search-information');
+const previousSearchData = localStorage.getItem('search-information');
 if (previousSearchData !== null) {
   searchResults = JSON.parse(previousSearchData);
 }
 
-window.addEventListener('beforeunload', function (event) {
-  var searchJSON = JSON.stringify(searchResults);
+window.addEventListener('beforeunload', event => {
+  const searchJSON = JSON.stringify(searchResults);
   localStorage.setItem('search-information', searchJSON);
 });
 
-var previousStatsData = localStorage.getItem('stats-information');
+const previousStatsData = localStorage.getItem('stats-information');
 if (previousStatsData !== null) {
   stats = JSON.parse(previousStatsData);
 }
 
-window.addEventListener('beforeunload', function (event) {
-  var statsJSON = JSON.stringify(stats);
+window.addEventListener('beforeunload', event => {
+  const statsJSON = JSON.stringify(stats);
   localStorage.setItem('stats-information', statsJSON);
 });
