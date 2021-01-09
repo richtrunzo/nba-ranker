@@ -1,9 +1,9 @@
 /* exported data */
-let data = {
+const data = {
   rankings: []
 };
 
-let searchResults = {
+const searchResults = {
   search: {
     name: null,
     title: null,
@@ -14,7 +14,7 @@ let searchResults = {
   results: []
 };
 
-let stats = {
+const stats = {
   name: null,
   id: null,
   ppg: null,
