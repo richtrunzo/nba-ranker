@@ -228,7 +228,6 @@ $searchResultsContainer.addEventListener('click', event => {
     listNumber++;
     listNumberString = listNumber.toString();
     viewSwap(1);
-    $createRankingForm.reset();
   }
 });
 
