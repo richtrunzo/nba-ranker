@@ -185,6 +185,7 @@ $createRankingForm.addEventListener('submit', event => {
   searchResults.search.description = $rankingDescription.value;
   searchResults.search.list = $createRankingListRender.innerHTML;
   data.rankings.push(searchResults.search);
+  $createRankingForm.reset();
   event.preventDefault();
   $view[3].appendChild(saveRankingRender(searchResults));
   viewSwap(3);
@@ -334,6 +335,7 @@ $homeButtonI.addEventListener('click', event => {
   listNumber = 1;
   listNumberString = listNumber.toString();
   $appendStatsDiv.innerHTML = '';
+  $createRankingForm.reset();
 });
 
 function viewSwap(view) {
